@@ -1,0 +1,142 @@
+/* Stable geometry at the browser's normal text/zoom scale.
+   No global zoom, transform scaling or fixed-height text containers. */
+html { scrollbar-gutter: stable; }
+body { overflow-wrap: break-word; }
+main, section, .section-inner,
+.section-inner > *, .hero-section > div > *, .final-cta > div > * { min-width: 0; }
+.section-title {
+  font-size: clamp(1.9rem, 1.15rem + 2.3vw, 3.15rem);
+  line-height: 1.1;
+  text-wrap: balance;
+}
+.hero-title {
+  font-size: clamp(2.25rem, 1.3rem + 3vw, 4.1rem);
+  line-height: 1.04;
+  text-wrap: balance;
+}
+.mobile-menu { max-height: calc(100vh - 4.5rem); max-height: calc(100dvh - 4.5rem); }
+.mobile-menu[hidden] { display: none; }
+section[id], [tabindex="-1"] { scroll-margin-top: 5.5rem; }
+.hero-demo, .hero-demo__hint, .maintenance-console { backdrop-filter: none; }
+.hero-demo { box-shadow: 0 20px 50px -28px #0009; }
+.hero-demo__window { box-shadow: 0 15px 35px -22px #0008; }
+.hero-demo__toolbar { grid-template-columns: 3rem minmax(0, 1fr) 1rem; }
+.hero-demo__switcher { max-width: 100%; flex-wrap: wrap; justify-content: center; }
+.hero-demo__switcher button { min-height: 2.75rem; padding-inline: .65rem; }
+.hero-demo__address { width: 100%; }
+.hero-demo__hint { right: .75rem; }
+.hero-demo__caption { min-height: 3.8rem; }
+.hero-orb, .hero-demo__aura, .audience-section__wash, .maintenance-glow,
+.process-orb, .contact-section__orb { display: none; }
+.contact-preview::after { display: none; }
+.final-cta__ambient { animation: none; filter: none; }
+.audience-explorer__tabs, .process-workspace__nav { min-width: 0; }
+.audience-explorer__tabs button { gap: .7rem; padding: 1rem .8rem; }
+.audience-explorer__tabs strong { overflow-wrap: anywhere; }
+.audience-explorer__tabs button.is-active { transform: none; }
+.audience-explorer__panel-inner { height: auto; }
+.audience-explorer__visual { height: 17rem; min-height: 17rem; }
+.audience-phone { width: 9rem; height: 14rem; padding: .7rem; }
+.audience-menu-item { margin-top: .4rem; }
+.audience-phone__action { margin-top: .6rem; }
+.audience-profile { animation-name: apex-card-float; }
+.solution-stack-item { position: relative; }
+.solution-card__content { min-width: 0; }
+.solution-card h3 { line-height: 1.08; }
+.solution-card__visual { contain: paint; }
+.solution-card__tags li { overflow-wrap: anywhere; }
+.solution-card__description, .solution-card__note { color: #c5d6ed; }
+.why-card { transition: background-color .2s, border-color .2s; }
+.why-card:hover { transform: none; }
+.why-card__description { padding: 0 1.35rem 1.35rem; }
+.why-card__description[hidden] { display: none; }
+.why-card > button { height: auto; min-height: 8.5rem; }
+.why-card__title { display: block; max-width: 25ch; margin-top: 1.5rem; color: var(--navy); font-size: 1.1rem; font-weight: 650; line-height: 1.3; }
+.why-card.is-active .why-card__title { color: white; }
+.process-workspace { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+.process-workspace__detail { padding: clamp(1.25rem, 3vw, 2.25rem); }
+.process-workspace__active { padding-block: 1.5rem; }
+.process-workspace__active h3 { max-width: 20ch; margin-top: 1.25rem; line-height: 1.1; }
+.process-workspace__icon { width: 4rem; height: 4rem; border-radius: 1rem; }
+.process-workspace__controls { flex-wrap: wrap; }
+.process-workspace__nav strong { min-width: 0; overflow-wrap: anywhere; }
+.why-card__number { color: #426079; }
+.about-grid { margin-top: 2rem; }
+.about-grid > *, .social-panel > * { min-width: 0; }
+.about-path { flex-wrap: wrap; justify-content: flex-start; gap: .75rem; }
+.social-intro h2 { font-size: clamp(1.9rem, 1.2rem + 2vw, 2.8rem); }
+.faq-section > .faq-layout { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 2rem; }
+.contact-layout { display: grid; gap: 1.5rem; margin-top: 2rem; align-items: start; }
+.contact-card { min-width: 0; padding: clamp(1.25rem, 3vw, 2rem); }
+.contact-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; }
+.contact-steps li { min-width: 0; display: flex; align-items: center; gap: .5rem; }
+.contact-steps li > span:first-child { flex: none; }
+.contact-steps li > span:last-child { font-size: .75rem; line-height: 1.3; }
+.contact-step-title { margin-block: 1.5rem .35rem; color: var(--navy); font-size: 1.25rem; font-weight: 650; }
+.contact-step-help { margin-bottom: 1.5rem; font-size: .9rem; color: #455a74; }
+.contact-preview { min-width: 0; box-shadow: var(--shadow-elevated); }
+.contact-preview pre { overflow-wrap: anywhere; white-space: pre-wrap; }
+.contact-preview details > summary { min-height: 2.75rem; cursor: pointer; padding-block: .7rem; }
+.contact-actions { flex-wrap: wrap; }
+.contact-actions button { max-width: 100%; }
+.contact-card [role="alert"] { color: #a32925; }
+.contact-card pre { overflow-wrap: anywhere; }
+.apex-preloader { pointer-events: none; animation: apex-preloader-dismiss .25s .45s both; }
+.apex-preloader[data-hidden="true"] { display: none; }
+@keyframes apex-preloader-dismiss { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+
+/* Only illustrative scenes animate, only while visible. Static, usable
+   fallback before JS and if IntersectionObserver is unsupported. */
+[data-motion-scene] * { animation-play-state: paused; animation-iteration-count: 2; }
+[data-motion-scene][data-motion-active="true"] * { animation-play-state: running; }
+html[data-motion-paused="true"] [data-motion-scene] * { animation-play-state: paused; }
+.hero-orb, .hero-demo__aura, .hero-demo__hint-dot, .hero-demo__product i,
+.audience-float, .audience-cart, .scroll-cue-line, .service-browser, .service-cursor,
+.catalog-chip, .system-node, .shield-ring--inner, .shield-status,
+.process-workspace__icon i, .maintenance-orbit--three, .maintenance-pulse,
+.service-graphic--system svg path, .scroll-indicator__line { animation: none; }
+
+@media (min-width: 1100px) and (min-height: 800px) and (prefers-reduced-motion: no-preference) {
+  /* Short screens and enlarged text use normal document flow. */
+  .solution-stack-item { position: sticky; top: 5.5rem; }
+}
+@media (min-width: 1100px) {
+  .contact-layout { grid-template-columns: minmax(0, 1.35fr) minmax(0, .8fr); }
+}
+@media (max-width: 1023px) {
+  .process-workspace { grid-template-columns: 1fr; }
+  .audience-explorer { min-height: 0; }
+  .audience-explorer__panel-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .audience-explorer__visual { height: 100%; min-height: 19rem; }
+}
+@media (max-width: 900px) {
+  .faq-section > .faq-layout { grid-template-columns: 1fr; }
+}
+@media (max-width: 639px) {
+  .hero-demo { min-height: 0; }
+  .hero-demo__window, .hero-demo__body { min-height: 0; }
+  .hero-demo__body { padding: .65rem; }
+  .hero-demo__preview { height: 15rem; }
+  .hero-demo__switcher button { font-size: .7rem; padding-inline: .55rem; }
+  .audience-explorer__panel-inner { grid-template-columns: 1fr; grid-template-rows: auto auto; }
+  .audience-explorer__visual { height: 16rem; min-height: 16rem; }
+  .audience-explorer__tabs button { padding: .6rem; gap: .4rem; }
+  .audience-explorer__content h3 { font-size: 1.8rem; }
+  .solution-card h3, .process-workspace__active h3 { font-size: 1.9rem; }
+  .solution-card__visual { min-height: 18rem; }
+  .solution-card__content { padding: 1.5rem 1.25rem; }
+  .why-card, .why-card:nth-child(3), .why-card:nth-child(6) { min-height: 0; }
+  .process-workspace__detail { min-height: 25rem; }
+  .contact-steps li { flex-direction: column; align-items: flex-start; }
+  .contact-steps li > span:last-child { display: block; }
+  .maintenance-console__top { flex-wrap: wrap; }
+  .social-panel { padding: 1.25rem; }
+  .social-links > a { padding: .85rem; }
+  .social-link-text strong { font-size: 1.05rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .hero-demo:hover .hero-demo__window { transform: none; }
+  .apex-preloader { display: none; }
+}

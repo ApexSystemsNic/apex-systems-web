@@ -1,0 +1,212 @@
+/* Shared movement. Every animation is disabled by the reduced-motion
+   rule below, while all controls and information remain usable. */
+@keyframes apex-orb-drift{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(2rem,-1rem,0)}}
+@keyframes apex-aura-pulse{0%,100%{opacity:.55;transform:scale(.94)}50%{opacity:1;transform:scale(1.08)}}
+@keyframes apex-spin{to{transform:rotate(360deg)}}
+@keyframes apex-spin-reverse{to{transform:translate(-50%,-50%) rotate(-360deg)}}
+@keyframes apex-product-pop{0%,100%{transform:scale(.92)}50%{transform:scale(1.08)}}
+@keyframes apex-bar-breathe{0%,100%{transform:scaleY(.72);opacity:.62}50%{transform:scaleY(1);opacity:1}}
+@keyframes apex-device-float{0%,100%{transform:translate(-50%,-50%) rotate(-4deg)}50%{transform:translate(-50%,calc(-50% - 8px)) rotate(-2deg)}}
+@keyframes apex-card-float{0%,100%{translate:0 0}50%{translate:0 -6px}}
+@keyframes apex-float-tag{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes apex-pin-bounce{0%,100%{transform:translateY(0) rotate(45deg)}50%{transform:translateY(-9px) rotate(45deg)}}
+@keyframes apex-line-grow{0%,100%{transform:scaleX(.45);opacity:.4}50%{transform:scaleX(1);opacity:1}}
+@keyframes apex-cursor-move{0%,100%{transform:translate(0,0)}50%{transform:translate(-1.2rem,-1rem)}}
+@keyframes apex-layer-shift{0%,100%{translate:0 0}50%{translate:0 -.45rem}}
+@keyframes apex-dash{to{stroke-dashoffset:-160}}
+@keyframes apex-node-float{0%,100%{translate:0 0}50%{translate:0 -7px}}
+@keyframes apex-shield-pulse{0%{transform:scale(.8);opacity:.8}75%,100%{transform:scale(1.65);opacity:0}}
+@keyframes apex-status-pulse{0%,100%{opacity:1}50%{opacity:.55}}
+
+@media (max-width: 1023px) {
+  .hero-demo{max-width:44rem;margin-inline:auto}
+  .solution-card{min-height:0;grid-template-columns:1fr}.solution-card__visual{min-height:25rem}.solution-card h3{max-width:18ch}
+  .audience-explorer,.process-workspace{grid-template-columns:1fr}.audience-explorer__tabs{display:grid;grid-template-columns:repeat(2,1fr)}.audience-explorer__tabs button+button{margin-top:0}.audience-explorer__tabs small{display:none}.audience-explorer__panel-inner{grid-template-columns:.95fr 1.05fr;grid-template-rows:1fr}.audience-explorer__visual{min-height:28rem}.process-workspace__nav ol{display:grid;grid-template-columns:repeat(2,1fr);gap:.3rem}.process-workspace__nav li+li{margin-top:0}.process-workspace__progress{display:none}.process-workspace__detail{min-height:27rem}
+}
+
+@media (max-width: 639px) {
+  .hero-demo{min-height:29rem;padding:.7rem;border-radius:1.35rem}.hero-demo__window{min-height:27.5rem;border-radius:1rem}.hero-demo__body{min-height:24.6rem}.hero-demo__preview{height:17rem}.hero-demo__hint{display:none}.hero-demo__address{width:80%;font-size:.52rem}.hero-demo__toolbar{grid-template-columns:3rem 1fr 2rem;padding:0 .7rem}.hero-demo__canvas--catalog{padding:1rem}.hero-demo__products{gap:.45rem}.hero-demo__product{padding:.4rem}.hero-demo__canvas--system{grid-template-columns:2.5rem 1fr;padding:.7rem}.hero-demo__system-grid{gap:.45rem;padding-left:.55rem}.hero-demo__chart{gap:.3rem;padding:.7rem}
+  .audience-explorer{border-radius:1.35rem}.audience-explorer__tabs{grid-template-columns:1fr 1fr;padding:.6rem}.audience-explorer__tabs button{grid-template-columns:auto 1fr;padding:.75rem;gap:.65rem}.audience-explorer__tabs svg{display:none}.audience-explorer__tabs strong{font-size:.78rem}.audience-explorer__number{width:1.8rem;height:1.8rem}.audience-explorer__panel{padding:.7rem}.audience-explorer__panel-inner{grid-template-columns:1fr;grid-template-rows:18rem auto}.audience-explorer__visual{min-height:18rem}.audience-explorer__content{padding:.6rem}.audience-phone{width:8.5rem;height:13rem;padding:.7rem;border-width:.4rem}.audience-menu-item{grid-template-columns:1.7rem 1fr auto;gap:.35rem;margin-top:.4rem}.audience-menu-item i{width:1.7rem;height:1.7rem}.audience-phone__action{margin-top:.6rem}.audience-store-grid{width:84%;gap:.4rem}.audience-store-grid>span{height:5.5rem;padding:.4rem}.audience-local-card{width:7.5rem}.audience-profile{left:8%;width:8.5rem}.audience-calendar{right:6%;width:10rem;padding:.7rem;gap:.35rem}.audience-calendar span{height:1.5rem}
+  .solution-card{margin-bottom:1.2rem;border-radius:1.4rem}.solution-card__content{padding:2rem 1.4rem}.solution-card h3{font-size:2.5rem}.solution-card__visual{min-height:21rem;margin:.7rem}.solution-card__tags li{font-size:.62rem}.catalog-layer{width:62%;height:48%}.system-node b{display:none}.system-node{padding:.65rem}.shield-ring--outer{width:72%}.shield-ring--inner{width:52%}
+  .why-grid{grid-template-columns:1fr}.why-card:nth-child(3),.why-card:nth-child(6){grid-column:auto}.why-card{min-height:12rem}.why-card:nth-child(3),.why-card:nth-child(6){min-height:12rem}
+  .process-workspace{border-radius:1.35rem}.process-workspace__nav{padding:.65rem}.process-workspace__nav ol{grid-template-columns:1fr 1fr}.process-workspace__nav button{min-height:3.8rem;grid-template-columns:1.8rem 1fr;padding:.5rem;gap:.55rem}.process-workspace__nav button>span{width:1.7rem;height:1.7rem}.process-workspace__nav svg{display:none}.process-workspace__nav strong{font-size:.7rem}.process-workspace__detail{min-height:26rem;padding:1.25rem}.process-workspace__giant-number{font-size:10rem}.process-workspace__active h3{font-size:2.5rem}.process-workspace__active p{font-size:.92rem}.process-workspace__controls{gap:.5rem}.process-workspace__controls>button{padding:.55rem .75rem;font-size:.72rem}
+  .maintenance-console__visual{height:15rem}.maintenance-console__cards{grid-template-columns:1fr}.maintenance-console__cards p{font-size:.72rem}
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-orb,.hero-demo__aura,.hero-demo__web-orbit,.hero-demo__product i,.hero-demo__chart i,
+  .audience-phone,.audience-float,.audience-store-grid>span,.audience-cart,.audience-map__pin,.audience-profile,.audience-calendar,
+  .scroll-cue-line,.service-browser,.service-bars i,.service-cursor,.catalog-layer,.catalog-chip,.service-graphic--system svg path,
+  .system-node,.shield-ring,.shield-pulse,.shield-status,.process-workspace__icon i,.maintenance-orbit,.maintenance-pulse {
+    animation: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/*
+ * Safety net for scroll- and mount-triggered reveal animations (see
+ * components/ui/MotionPrimitives.tsx): visitors who prefer reduced
+ * motion always see content in its resting, fully visible state,
+ * regardless of whether the observer or timer driving the animation
+ * ever fires. The descendant selector also catches per-word reveals
+ * nested inside a `.motion-reveal` container.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .motion-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+}
+
+/* Brand entrance overlay (see components/sections/00-preloader/Preloader.tsx). Plain
+   CSS, not Motion: it must animate correctly even before React
+   hydrates. */
+.apex-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy);
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.apex-preloader[data-hidden="true"] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.apex-preloader__logo {
+  width: 72px;
+  height: 72px;
+  border-radius: 1rem;
+  animation: apex-preloader-in 0.5s ease-out both;
+}
+
+@keyframes apex-preloader-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .apex-preloader {
+    transition: none;
+  }
+  .apex-preloader__logo {
+    animation: none;
+  }
+}
+
+/* Hero pointer glow (components/sections/HeroPointerGlow.tsx) — inert
+   until JS opts a fine-pointer, motion-OK visitor in via the
+   `hero-visual--interactive` class, then just tracks two custom
+   properties. No continuous animation runs while the pointer is idle. */
+.hero-visual__glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    360px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    rgba(22, 184, 255, 0.16),
+    transparent 70%
+  );
+}
+
+.hero-visual--interactive.hero-visual__glow {
+  opacity: 1;
+}
+
+/* Scroll indicator (components/sections/ScrollIndicator.tsx). Doesn't
+   carry information the page doesn't already convey by continuing past
+   the fold, so under reduced motion it's removed outright rather than
+   left sitting there inert. */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-indicator {
+    display: none !important;
+  }
+}
+
+.scroll-indicator__line {
+  height: 28px;
+  width: 1px;
+  background: var(--navy);
+  opacity: 0.3;
+  animation: apex-scroll-breathe 2.2s ease-in-out infinite;
+}
+
+@keyframes apex-scroll-breathe {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* FAQ answer fade-in (components/sections/FAQ.tsx). Plain CSS keyed off
+   the native <details> [open] attribute — the answer's height never
+   animates (that would need JS to avoid layout jank with native
+   <details>), only its opacity, which keeps the accordion fully
+   functional and accessible with JavaScript disabled. */
+@media (prefers-reduced-motion: no-preference) {
+  details[open] > .faq-answer {
+    animation: apex-faq-in 0.25s ease-out both;
+  }
+}
+
+@keyframes apex-faq-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Final CTA ambient background (components/sections/FinalCTA.tsx): a
+   large, soft, very-low-opacity glow that drifts slowly behind the text
+   — never a foreground element, never touching text contrast. Paused
+   entirely under reduced motion rather than just slowed down. */
+.final-cta__ambient {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  z-index: 0;
+  height: 140%;
+  width: 55%;
+  background: radial-gradient(circle, rgba(22, 184, 255, 0.14), transparent 70%);
+  filter: blur(10px);
+  animation: apex-ambient-drift 14s ease-in-out infinite;
+}
+
+@keyframes apex-ambient-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-4%, 3%) scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .final-cta__ambient {
+    animation: none;
+  }
+}

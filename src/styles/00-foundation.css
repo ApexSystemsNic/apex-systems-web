@@ -1,0 +1,82 @@
+:root {
+  color-scheme: light;
+
+  --background: #f3f7fb;
+  --foreground: #081a33;
+
+  /* Paleta de marca de Apex Systems. */
+  --navy: #052b68;
+  --sky: #16b8ff;
+  --surface: #ffffff;
+  --mint: #29c7a4;
+  --coral: #ff6b4a;
+  --violet: #7667f5;
+  --line: #dce5f0;
+
+  /* Centralized layout tokens, so widths/shadows aren't repeated as
+     magic numbers across every section component. */
+  --max-width-page: 1240px;
+  --max-width-narrow: 900px;
+  --max-width-legal: 760px;
+  --shadow-elevated: 0 18px 45px -24px rgba(8, 26, 51, 0.35);
+  --shadow-card: 0 28px 80px -36px rgba(5, 43, 104, 0.55);
+}
+
+/* This app intentionally has no dark theme yet: the brand direction is a
+   controlled light palette, and Next.js/the OS should never override it.
+   `color-scheme: light` above stops native form controls and scrollbars
+   from switching to a dark rendering when the OS is set to dark mode. */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-navy: var(--navy);
+  --color-sky: var(--sky);
+  --color-surface: var(--surface);
+  --color-mint: var(--mint);
+  --color-coral: var(--coral);
+  --color-violet: var(--violet);
+  --color-line: var(--line);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --max-width-page: var(--max-width-page);
+  --max-width-narrow: var(--max-width-narrow);
+  --max-width-legal: var(--max-width-legal);
+  --shadow-elevated: var(--shadow-elevated);
+  --shadow-card: var(--shadow-card);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  overflow-x: clip;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(22, 184, 255, 0.28);
+  color: var(--navy);
+}
+
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--navy);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.section-kicker::before {
+  width: 1.75rem;
+  height: 1px;
+  content: "";
+  background: var(--sky);
+}
+
+.section-kicker--light {
+  color: rgba(255, 255, 255, 0.7);
+}

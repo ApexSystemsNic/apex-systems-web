@@ -141,25 +141,27 @@ export function HeroExperience() {
             </AnimatePresence>
           </div>
 
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={`${active.id}-copy`}
-              initial={{ opacity: 0, x: -8 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 8 }}
-              transition={{ duration: 0.25 }}
-              className="hero-demo__caption"
-            >
-              <span>{active.solution.number}</span>
-              <p>{active.solution.hook}</p>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </div>
+          <div className="hero-demo__footer">
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={`${active.id}-copy`}
+                initial={{ opacity: 0, x: -8 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 8 }}
+                transition={{ duration: 0.25 }}
+                className="hero-demo__caption"
+              >
+                <span>{active.solution.number}</span>
+                <p>{active.solution.hook}</p>
+              </motion.div>
+            </AnimatePresence>
 
-      <div className="hero-demo__hint" aria-hidden="true">
-        <span className="hero-demo__hint-dot" />
-        Elige una solución
+            <div className="hero-demo__hint" aria-hidden="true">
+              <span className="hero-demo__hint-dot" />
+              Elige una solución
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -86,36 +86,37 @@ function ShieldGraphic() {
 }
 
 function MobileGraphic() {
-  const stats = [
-    ["Pedidos", "128"],
-    ["Citas", "34"],
-  ];
+  const nodes = ["Panel", "API", "Base de datos", "Sistema"];
   return (
     <div className="service-graphic service-graphic--mobile" aria-hidden="true">
-      <svg className="mobile-link" viewBox="0 0 480 280" fill="none" preserveAspectRatio="xMidYMid meet">
-        <path d="M240 140 92 70M240 140 392 78M240 140 96 212M240 140 394 208" />
+      <svg className="mobile-links" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none">
+        <path d="M50 50 17 24M50 50 83 26M50 50 17 76M50 50 83 74" />
       </svg>
-      <span className="mobile-sync mobile-sync--one"><i /><b>Panel</b></span>
-      <span className="mobile-sync mobile-sync--two"><i /><b>API</b></span>
-      <span className="mobile-sync mobile-sync--three"><i /><b>Base de datos</b></span>
-      <span className="mobile-sync mobile-sync--four"><i /><b>Sistema</b></span>
+      {nodes.map((label, index) => (
+        <span key={label} className={`mobile-node mobile-node--${index + 1}`}>
+          <i />
+          <b>{label}</b>
+        </span>
+      ))}
       <div className="mobile-phone">
         <span className="mobile-phone__notch" />
         <div className="mobile-phone__screen">
           <div className="mobile-phone__head">
-            <b>Operación</b>
-            <span className="mobile-phone__bell"><i /></span>
+            <b>Dashboard</b>
+            <i />
+          </div>
+          <div className="mobile-phone__hero">
+            <small>Ventas hoy</small>
+            <strong>C$ 24,580</strong>
+            <svg viewBox="0 0 100 30" preserveAspectRatio="none" fill="none">
+              <path className="mobile-phone__area" d="M0 24 18 18 34 21 52 11 70 14 100 3V30H0Z" />
+              <path className="mobile-phone__line" d="M0 24 18 18 34 21 52 11 70 14 100 3" />
+            </svg>
           </div>
           <div className="mobile-phone__stats">
-            {stats.map(([label, value]) => (
-              <span key={label}><small>{label}</small><b>{value}</b></span>
-            ))}
+            <span><small>Pedidos</small><b>18</b></span>
+            <span><small>Clientes</small><b>42</b></span>
           </div>
-          <div className="mobile-phone__chart">
-            {[40, 62, 50, 84, 70].map((height) => <i key={height} style={{ height: `${height}%` }} />)}
-          </div>
-          <div className="mobile-phone__row"><i /><span /><em /></div>
-          <div className="mobile-phone__row"><i /><span /><em /></div>
           <div className="mobile-phone__nav"><i /><i /><i /><i /></div>
         </div>
       </div>

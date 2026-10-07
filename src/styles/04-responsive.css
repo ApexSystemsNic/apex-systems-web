@@ -24,7 +24,6 @@ section[id], [tabindex="-1"] { scroll-margin-top: 5.5rem; }
 .hero-demo__switcher { max-width: 100%; flex-wrap: wrap; justify-content: center; }
 .hero-demo__switcher button { min-height: 2.75rem; padding-inline: .65rem; }
 .hero-demo__address { width: 100%; }
-.hero-demo__hint { right: .75rem; }
 .hero-demo__caption { min-height: 3.8rem; }
 .hero-orb, .hero-demo__aura, .audience-section__wash, .maintenance-glow,
 .process-orb, .contact-section__orb { display: none; }

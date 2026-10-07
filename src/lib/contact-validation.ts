@@ -16,7 +16,7 @@ export function getContactErrors(step: number, data: ContactFormData): string[] 
     }
   }
   if (step === 2) {
-    if (!["pagina-web", "tienda-catalogo", "sistema-personalizado", "mantenimiento", "otro"].includes(data.solucion)) errors.push("solucion");
+    if (!["pagina-web", "tienda-catalogo", "sistema-personalizado", "aplicacion-movil", "mantenimiento", "otro"].includes(data.solucion)) errors.push("solucion");
     if (!data.descripcion.trim() || data.descripcion.length > CONTACT_LIMITS.descripcion) errors.push("descripcion");
   }
   if (step === 3) {

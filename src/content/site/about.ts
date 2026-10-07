@@ -5,6 +5,6 @@ export const aboutApex = {
     label: "Nuestra historia",
     title: "Apex comienza con una idea sencilla: escuchar antes de construir.",
     description:
-      "Somos un proyecto nicaragüense que reúne diseño, desarrollo y acompañamiento en un mismo proceso. Creamos Apex para acercar soluciones digitales claras y personalizadas a negocios y profesionales que necesitan avanzar sin adaptar su forma de trabajar a una herramienta genérica.",
+      "Somos un estudio tecnológico nicaragüense que reúne diseño, desarrollo y acompañamiento en un mismo proceso. Creamos Apex para acercar soluciones digitales claras y personalizadas a negocios y profesionales que necesitan avanzar sin adaptar su forma de trabajar a una herramienta genérica.",
   },
 };

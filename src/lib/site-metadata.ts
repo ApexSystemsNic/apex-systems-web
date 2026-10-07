@@ -11,14 +11,17 @@ export function buildPageMetadata({
   title,
   description,
   path,
+  noindex = false,
 }: {
   title: string;
   description: string;
   path: string;
+  noindex?: boolean;
 }): Metadata {
   return {
     title,
     description,
+    ...(noindex && { robots: { index: false, follow: false } }),
     alternates: {
       canonical: path,
     },

@@ -33,3 +33,15 @@
 - Probar los metadatos al compartir la URL en redes/mensajería.
 - Verificar que no existan errores de consola, enlaces rotos ni desplazamiento horizontal.
 - Probar teclado, movimiento reducido y navegadores actuales.
+
+## Google Search Console (después del despliegue)
+
+1. Entrar a Google Search Console y elegir el tipo de propiedad:
+   - **Dominio** (`apexsystemsnic.com`): cubre todos los subdominios y protocolos. Se verifica únicamente mediante un registro DNS (TXT) en el proveedor del dominio.
+   - **Prefijo de URL** (`https://apexsystemsnic.com/`): cubre solo ese prefijo. Admite varios métodos de verificación, entre ellos la etiqueta meta HTML.
+2. Verificar la propiedad. `GOOGLE_SITE_VERIFICATION` (opcional) solo agrega la etiqueta meta y sirve para una propiedad de prefijo de URL; no verifica una propiedad de dominio. Definirla en el entorno de construcción con solo el valor de `content`.
+3. Enviar `https://apexsystemsnic.com/sitemap.xml`.
+4. Solicitar indexación de `https://apexsystemsnic.com/`.
+5. Revisar indexación y consultas pasadas unas semanas.
+
+Las páginas `/privacidad`, `/cookies` y `/terminos` están en `noindex, nofollow` y fuera del sitemap mientras sean borradores; al publicar las versiones finales, quitar `noindex` y volver a agregarlas al sitemap.

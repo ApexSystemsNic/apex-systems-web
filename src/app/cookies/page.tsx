@@ -6,7 +6,7 @@ import { buildPageMetadata } from "@/lib/site-metadata";
 const title = "Política de cookies | Apex Systems";
 const description = "Qué cookies usa este sitio y cómo puedes gestionarlas.";
 
-export const metadata = buildPageMetadata({ title, description, path: "/cookies" });
+export const metadata = buildPageMetadata({ title, description, path: "/cookies", noindex: true });
 
 export default function CookiesPage() {
   return (

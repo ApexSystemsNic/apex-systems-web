@@ -6,7 +6,7 @@ import { buildPageMetadata } from "@/lib/site-metadata";
 const title = "Política de privacidad | Apex Systems";
 const description = "Cómo Apex Systems maneja la información que recibe a través de este sitio.";
 
-export const metadata = buildPageMetadata({ title, description, path: "/privacidad" });
+export const metadata = buildPageMetadata({ title, description, path: "/privacidad", noindex: true });
 
 export default function PrivacidadPage() {
   return (

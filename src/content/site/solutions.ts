@@ -22,6 +22,7 @@ export const solutions = {
       ],
       cta: "Quiero una página web",
       accent: "sky",
+      visual: "web",
     },
     {
       number: "02",
@@ -41,6 +42,7 @@ export const solutions = {
       note: "No ofrecemos pagos en línea por el momento.",
       cta: "Digitalizar mi negocio",
       accent: "coral",
+      visual: "catalog",
     },
     {
       number: "03",
@@ -61,9 +63,30 @@ export const solutions = {
       ],
       cta: "Necesito una solución personalizada",
       accent: "violet",
+      visual: "system",
     },
     {
       number: "04",
+      title: "Aplicaciones móviles para negocios",
+      hook: "Lleva las operaciones y servicios de tu negocio directamente al celular.",
+      description:
+        "Desarrollamos aplicaciones móviles personalizadas para empresas que necesitan digitalizar procesos, gestionar operaciones, ofrecer servicios o conectarse mejor con sus clientes y equipos.",
+      includes: [
+        "Android y iOS",
+        "Diseño personalizado",
+        "Panel administrativo",
+        "Usuarios y accesos",
+        "Notificaciones",
+        "Integración con APIs",
+        "Bases de datos",
+        "Integración con sistemas",
+      ],
+      cta: "Quiero una aplicación",
+      accent: "sky",
+      visual: "mobile",
+    },
+    {
+      number: "05",
       title: "Soporte y mantenimiento",
       badge: "Exclusivo para clientes Apex",
       hook: "Tu proyecto no termina cuando publicamos la página.",
@@ -72,6 +95,7 @@ export const solutions = {
       includes: [],
       cta: "Conocer el mantenimiento",
       accent: "mint",
+      visual: "support",
     },
   ] satisfies SolutionCard[],
 };

@@ -20,6 +20,7 @@ export type SolutionCard = {
   note?: string;
   cta: string;
   accent: "sky" | "coral" | "violet" | "mint";
+  visual: "web" | "catalog" | "system" | "mobile" | "support";
   badge?: string;
 };
 

@@ -107,23 +107,10 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-white/45">
+        <div className="mt-8 border-t border-white/10 pt-6">
+          <p className="text-center text-xs text-white/45 sm:text-left">
             © {year} Apex Systems. Todos los derechos reservados.
           </p>
-
-          <ul className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-white/45">
-            {footer.legalLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="underline-offset-4 transition-colors hover:text-sky hover:underline"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </footer>

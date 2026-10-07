@@ -6,11 +6,9 @@ export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = getSiteUrl();
 
+  // Legal pages are noindex drafts: add them back once their final versions are published.
   const routes = [
     { path: "/", changeFrequency: "monthly" as const, priority: 1 },
-    { path: "/privacidad", changeFrequency: "yearly" as const, priority: 0.4 },
-    { path: "/cookies", changeFrequency: "yearly" as const, priority: 0.4 },
-    { path: "/terminos", changeFrequency: "yearly" as const, priority: 0.4 },
   ];
 
   return routes.map(({ path, changeFrequency, priority }) => ({

@@ -11,6 +11,7 @@ export const contact = {
     { value: "pagina-web", label: "Páginas web" },
     { value: "tienda-catalogo", label: "Tiendas y catálogos digitales" },
     { value: "sistema-personalizado", label: "Sistemas personalizados" },
+    { value: "aplicacion-movil", label: "Aplicaciones móviles para negocios" },
     { value: "mantenimiento", label: "Mantenimiento — solo para clientes Apex" },
     { value: "otro", label: "Otro / no estoy seguro" },
   ] satisfies SolutionOption[],

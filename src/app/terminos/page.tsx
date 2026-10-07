@@ -6,7 +6,7 @@ import { buildPageMetadata } from "@/lib/site-metadata";
 const title = "Términos de uso | Apex Systems";
 const description = "Condiciones orientativas de uso de este sitio y del proceso de cotización.";
 
-export const metadata = buildPageMetadata({ title, description, path: "/terminos" });
+export const metadata = buildPageMetadata({ title, description, path: "/terminos", noindex: true });
 
 export default function TerminosPage() {
   return (

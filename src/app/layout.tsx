@@ -5,6 +5,7 @@ import { Preloader } from "@/components/sections/00-preloader/Preloader";
 import MotionProvider from "@/components/ui/MotionProvider";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { getSiteUrl } from "@/lib/site-url";
+import { buildStructuredData } from "@/lib/structured-data";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -17,15 +18,18 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const title =
-  "Apex Systems | Transformamos tu negocio en soluciones digitales";
+const title = "Apex Systems Nicaragua | Desarrollo web y software";
 
 const description =
-  "Apex Systems diseña páginas web, tiendas digitales y sistemas personalizados para emprendimientos, profesionales y negocios de Nicaragua.";
+  "Apex Systems Nicaragua desarrolla páginas web, sistemas personalizados, aplicaciones móviles y soluciones digitales para empresas y negocios.";
+
+// Optional: set GOOGLE_SITE_VERIFICATION at build time to add the Search Console meta tag.
+const googleVerification = process.env.GOOGLE_SITE_VERIFICATION?.trim();
 
 export const metadata: Metadata = {
   metadataBase: getSiteUrl(),
   ...buildPageMetadata({ title, description, path: "/" }),
+  ...(googleVerification && { verification: { google: googleVerification } }),
 };
 
 export default function RootLayout({
@@ -39,6 +43,10 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(buildStructuredData(getSiteUrl())) }}
+        />
         <Preloader />
 
         <a

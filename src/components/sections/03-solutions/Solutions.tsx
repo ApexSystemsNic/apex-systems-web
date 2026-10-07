@@ -85,11 +85,50 @@ function ShieldGraphic() {
   );
 }
 
-const GRAPHICS: Record<SolutionCard["accent"], () => ReactNode> = {
-  sky: WebGraphic,
-  coral: CatalogGraphic,
-  violet: SystemGraphic,
-  mint: ShieldGraphic,
+function MobileGraphic() {
+  const stats = [
+    ["Pedidos", "128"],
+    ["Citas", "34"],
+  ];
+  return (
+    <div className="service-graphic service-graphic--mobile" aria-hidden="true">
+      <svg className="mobile-link" viewBox="0 0 480 280" fill="none" preserveAspectRatio="xMidYMid meet">
+        <path d="M240 140 92 70M240 140 392 78M240 140 96 212M240 140 394 208" />
+      </svg>
+      <span className="mobile-sync mobile-sync--one"><i /><b>Panel</b></span>
+      <span className="mobile-sync mobile-sync--two"><i /><b>API</b></span>
+      <span className="mobile-sync mobile-sync--three"><i /><b>Base de datos</b></span>
+      <span className="mobile-sync mobile-sync--four"><i /><b>Sistema</b></span>
+      <div className="mobile-phone">
+        <span className="mobile-phone__notch" />
+        <div className="mobile-phone__screen">
+          <div className="mobile-phone__head">
+            <b>Operación</b>
+            <span className="mobile-phone__bell"><i /></span>
+          </div>
+          <div className="mobile-phone__stats">
+            {stats.map(([label, value]) => (
+              <span key={label}><small>{label}</small><b>{value}</b></span>
+            ))}
+          </div>
+          <div className="mobile-phone__chart">
+            {[40, 62, 50, 84, 70].map((height) => <i key={height} style={{ height: `${height}%` }} />)}
+          </div>
+          <div className="mobile-phone__row"><i /><span /><em /></div>
+          <div className="mobile-phone__row"><i /><span /><em /></div>
+          <div className="mobile-phone__nav"><i /><i /><i /><i /></div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const GRAPHICS: Record<SolutionCard["visual"], () => ReactNode> = {
+  web: WebGraphic,
+  catalog: CatalogGraphic,
+  system: SystemGraphic,
+  mobile: MobileGraphic,
+  support: ShieldGraphic,
 };
 
 export default function Solutions() {
@@ -117,7 +156,7 @@ export default function Solutions() {
 
       <div className="relative mt-14 flex flex-col gap-7 lg:gap-0">
         {solutions.cards.map((card, index) => {
-          const Graphic = GRAPHICS[card.accent];
+          const Graphic = GRAPHICS[card.visual];
           return (
             <div key={card.number} className="solution-stack-item" style={{ zIndex: index + 1 }}>
               <Reveal>
@@ -126,7 +165,7 @@ export default function Solutions() {
                   <div className="solution-card__content">
                     <div className="flex flex-wrap items-center gap-3">
                       <span className={`font-mono text-sm font-semibold ${ACCENT_TEXT[card.accent]}`}>
-                        {card.number} / 04
+                        {card.number} / {String(solutions.cards.length).padStart(2, "0")}
                       </span>
                       {card.badge && <span className="solution-card__badge">{card.badge}</span>}
                     </div>

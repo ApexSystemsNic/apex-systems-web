@@ -1,0 +1,5 @@
+# Política de reporte de vulnerabilidades de Apex Systems (RFC 9116).
+Contact: mailto:ApexSystemsNic@outlook.com
+Expires: 2027-10-06T23:59:00.000Z
+Preferred-Languages: es, en
+Canonical: https://apexsystemsnic.com/.well-known/security.txt

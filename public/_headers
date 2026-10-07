@@ -6,6 +6,10 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
   Cross-Origin-Opener-Policy: same-origin-allow-popups
 
+# RFC 9116 exige text/plain con UTF-8 para security.txt.
+/.well-known/security.txt
+  Content-Type: text/plain; charset=utf-8
+
 # Los archivos de Next.js llevan hash en el nombre y pueden almacenarse
 # de forma inmutable en el navegador.
 /_next/static/*

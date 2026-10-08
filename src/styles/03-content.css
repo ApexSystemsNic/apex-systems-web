@@ -20,10 +20,8 @@ section[id] {
 .final-cta { background: radial-gradient(60% 120% at 95% 0%, rgba(118,103,245,.28), transparent 70%), linear-gradient(140deg,#031d49,#052b68) !important; }
 .final-cta__grid { opacity: .3; mask-image: radial-gradient(circle at 70% 30%, black, transparent 70%); }
 
-/* The maintenance orbit needs to retain its centering translation while
-   rotating; the shield rings above rotate around their normal center. */
-.maintenance-orbit--three { animation-name: apex-orbit-reverse; }
-.maintenance-orbit--two { animation-name: apex-orbit-spin; }
+/* The shield rings rotate around their own center; keep the centering
+   translation via the orbit keyframes. */
 .shield-ring { left: 50%; top: 50%; transform: translate(-50%, -50%); }
 .shield-ring--outer { animation-name: apex-orbit-spin; }
 .shield-ring--inner { animation-name: apex-orbit-reverse; }

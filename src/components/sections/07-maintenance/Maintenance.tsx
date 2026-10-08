@@ -1,6 +1,7 @@
 import { maintenance } from "@/content/site-content";
 import { LinkButton } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/MotionPrimitives";
+import MaintenanceTimeline from "./MaintenanceTimeline";
 
 export default function Maintenance() {
   return (
@@ -42,13 +43,8 @@ export default function Maintenance() {
               <span><i /> Acompañamiento claro</span>
             </div>
 
-            <div className="maintenance-console__visual" data-motion-scene aria-hidden="true">
-              <span className="maintenance-orbit maintenance-orbit--one" />
-              <span className="maintenance-orbit maintenance-orbit--two" />
-              <span className="maintenance-orbit maintenance-orbit--three" />
-              <div className="maintenance-core"><i>✓</i></div>
-              <span className="maintenance-pulse maintenance-pulse--one" />
-              <span className="maintenance-pulse maintenance-pulse--two" />
+            <div className="maintenance-console__visual" data-motion-scene>
+              <MaintenanceTimeline />
             </div>
 
             <div className="maintenance-console__cards">

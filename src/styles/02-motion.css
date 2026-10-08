@@ -30,14 +30,14 @@
   .solution-card{margin-bottom:1.2rem;border-radius:1.4rem}.solution-card__content{padding:2rem 1.4rem}.solution-card h3{font-size:2.5rem}.solution-card__visual{min-height:21rem;margin:.7rem}.solution-card__tags li{font-size:.62rem}.catalog-layer{width:62%;height:48%}.system-node b{display:none}.system-node{padding:.65rem}.shield-ring--outer{width:72%}.shield-ring--inner{width:52%}
   .why-grid{grid-template-columns:1fr}.why-card:nth-child(3),.why-card:nth-child(6){grid-column:auto}.why-card{min-height:12rem}.why-card:nth-child(3),.why-card:nth-child(6){min-height:12rem}
   .process-workspace{border-radius:1.35rem}.process-workspace__nav{padding:.65rem}.process-workspace__nav ol{grid-template-columns:1fr 1fr}.process-workspace__nav button{min-height:3.8rem;grid-template-columns:1.8rem 1fr;padding:.5rem;gap:.55rem}.process-workspace__nav button>span{width:1.7rem;height:1.7rem}.process-workspace__nav svg{display:none}.process-workspace__nav strong{font-size:.7rem}.process-workspace__detail{min-height:26rem;padding:1.25rem}.process-workspace__giant-number{font-size:10rem}.process-workspace__active h3{font-size:2.5rem}.process-workspace__active p{font-size:.92rem}.process-workspace__controls{gap:.5rem}.process-workspace__controls>button{padding:.55rem .75rem;font-size:.72rem}
-  .maintenance-console__visual{height:15rem}.maintenance-console__cards{grid-template-columns:1fr}.maintenance-console__cards p{font-size:.72rem}
+  .maintenance-console__cards{grid-template-columns:1fr}.maintenance-console__cards p{font-size:.72rem}
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-orb,.hero-demo__aura,.hero-demo__web-orbit,.hero-demo__product i,.hero-demo__chart i,
   .audience-phone,.audience-float,.audience-store-grid>span,.audience-cart,.audience-map__pin,.audience-profile,.audience-calendar,
   .scroll-cue-line,.service-browser,.service-bars i,.service-cursor,.catalog-layer,.catalog-chip,.service-graphic--system svg path,
-  .system-node,.shield-ring,.shield-pulse,.shield-status,.process-workspace__icon i,.maintenance-orbit,.maintenance-pulse {
+  .system-node,.shield-ring,.shield-pulse,.shield-status,.process-workspace__icon i {
     animation: none !important;
   }
 }

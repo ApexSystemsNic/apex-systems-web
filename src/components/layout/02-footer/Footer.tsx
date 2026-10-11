@@ -12,7 +12,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-3">
               <Image
-                src="/apex-logo.png"
+                src="/apex-logo-96.png"
                 alt="Apex Systems"
                 width={36}
                 height={36}

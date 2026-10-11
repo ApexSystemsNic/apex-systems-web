@@ -80,7 +80,7 @@ export default function Header() {
           className="flex items-center gap-3 rounded-md"
         >
           <Image
-            src="/apex-logo.png"
+            src="/apex-logo-96.png"
             alt="Apex Systems"
             width={40}
             height={40}

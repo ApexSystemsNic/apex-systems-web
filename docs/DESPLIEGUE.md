@@ -25,6 +25,8 @@ Usa exactamente estos valores:
 | Build output directory | `out` |
 | Root directory | dejar vacío |
 
+`npm run build` es el valor documentado y esperado para **Build command**, pero debe verificarse en el panel: a 2026-10-13 el sitio publicado no se está compilando con ese comando (ver la nota sobre el bundler en la sección 5).
+
 Variables de entorno de producción:
 
 | Variable | Valor |
@@ -69,16 +71,48 @@ Cuando Cloudflare muestre el dominio como **Active** y el certificado esté emit
 
 El archivo `public/_headers` ya añade protección contra MIME sniffing, clickjacking, permisos innecesarios y fuga excesiva del referente. También evita que las direcciones temporales de Pages sean indexadas.
 
-## 5. Verificación local opcional
+## 5. Validación de despliegue (`check:deploy`)
+
+`npm run check:deploy` ejecuta tres pasos y se detiene en el primero que falle:
+
+1. **Antes del build** (`node scripts/validate-production.mjs`): si `SITE_URL` está definida, debe ser un origen `https://` sin ruta, query ni hash y no puede ser `localhost`. Si no es `https://apexsystemsnic.com` muestra un aviso, sin fallar (vistas previas o migraciones). Si no está definida no falla: el build usa el dominio oficial.
+2. **`npm run check`**: lint, typecheck y build.
+3. **Después del build** (`node scripts/validate-production.mjs --out`): revisa `out/` sin modificarlo.
+   - Existen `index.html`, `404.html`, las tres páginas legales, `robots.txt`, `sitemap.xml` y `_headers`.
+   - Ningún `.html`, `.xml` o `.txt` contiene `localhost` ni `127.0.0.1`.
+   - `canonical`, `og:url`, `sitemap.xml` y `robots.txt` usan un único origen `https://`, igual a `SITE_URL` cuando está definida.
+   - `out/_headers` es idéntico a `public/_headers`.
+
+El script no usa red, dependencias ni secretos.
 
 En PowerShell:
 
 ```powershell
 npm.cmd ci
-$env:SITE_URL="https://apexsystemsnic.com"
 npm.cmd run check:deploy
 npm.cmd run preview
 ```
+
+### Propuesta: usarlo como build command en Cloudflare
+
+El build command del panel no ejecuta esta validación, así que hoy no corre en el despliegue. Para que un export defectuoso no llegue a publicarse, se puede cambiar en **Settings → Builds & deployments → Build command**:
+
+| Campo | Valor documentado | Valor propuesto |
+| --- | --- | --- |
+| Build command | `npm run build` (verificar en el panel) | `npm run check:deploy` |
+
+El directorio de salida sigue siendo `out`. Con el cambio, un error de lint, de tipos o de la verificación de `out/` detiene el despliegue y la versión anterior sigue publicada; el build tarda algo más por el lint y el typecheck.
+
+#### Nota: el bundler de producción no es el del repositorio
+
+A 2026-10-13, el HTML de `https://apexsystemsnic.com/` carga `/_next/static/chunks/turbopack-*.js`: producción se sirve compilada con **Turbopack**. En el repositorio, `npm run build` es `next build --webpack`, y `check` y `check:deploy` lo usan, así que el build local se hace con **webpack**. Eso indica que el build command del panel no es `npm run build` (probablemente sea el comando por defecto del preset, `npx next build`).
+
+Consecuencias:
+
+- Cambiar el build command a `npm run check:deploy` (o a `npm run build`) cambiaría además el bundler de producción a webpack. Es una decisión del propietario, a tomar a sabiendas, y conviene probarla primero en un preview `*.pages.dev`.
+- Alternativa equivalente: mantener el build command actual y ejecutar `npm run check:deploy` solo en local antes de publicar. En ese caso lo que se valida en local (webpack) no es exactamente lo que compila Cloudflare (Turbopack).
+
+Cualquier cambio se hace en el panel de Cloudflare y **es decisión del propietario del sitio**: el repositorio no lo aplica.
 
 ## 6. Lista posterior al despliegue
 

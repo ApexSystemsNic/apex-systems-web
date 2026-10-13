@@ -9,7 +9,7 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "check": "npm run lint && npm run typecheck && npm run build",
-    "check:deploy": "node scripts/validate-production.mjs && npm run check"
+    "check:deploy": "node scripts/validate-production.mjs && npm run check && node scripts/validate-production.mjs --out"
   },
   "dependencies": {
     "motion": "^13.2.0",

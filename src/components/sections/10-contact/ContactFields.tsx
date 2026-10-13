@@ -1,4 +1,4 @@
-import { contact } from "@/content/site-content";
+import { contact, newTabHint } from "@/content/site-content";
 import { CONTACT_LIMITS as MAX_LENGTH } from "@/lib/contact-validation";
 import type { ContactFormData } from "@/lib/contact-message";
 
@@ -143,6 +143,19 @@ export function ContactFields({
     );
   }
 
+  // El error "contacto" solo marca el campo que falta según el medio elegido.
+  const phoneMissing = showError("contacto") && !data.telefono.trim() && data.medioContacto !== "correo";
+  const emailMissing = showError("contacto") && !data.correo.trim() && data.medioContacto !== "whatsapp";
+  const contactError = (className: string) => (
+    <p id={errorId("contacto")} role="alert" className={`text-xs text-coral ${className}`}>
+      {data.medioContacto === "whatsapp"
+        ? "Añade tu teléfono para contactarte por WhatsApp."
+        : data.medioContacto === "correo"
+          ? "Añade tu correo para contactarte por ese medio."
+          : "Déjanos al menos un teléfono o un correo."}
+    </p>
+  );
+
   return (
     <div className="grid gap-5 sm:grid-cols-2">
       <div>
@@ -156,9 +169,10 @@ export function ContactFields({
           className={inputClass}
           value={data.telefono}
           onChange={(event) => update("telefono", event.target.value)}
-          aria-invalid={showError("contacto") || showError("telefono")}
-          aria-describedby={showError("telefono") ? errorId("telefono") : describedBy("contacto")}
+          aria-invalid={phoneMissing || showError("telefono")}
+          aria-describedby={showError("telefono") ? errorId("telefono") : phoneMissing ? errorId("contacto") : undefined}
         />
+        {phoneMissing && !emailMissing && contactError("mt-1")}
         {showError("telefono") && <p id={errorId("telefono")} role="alert" className="mt-1 text-xs text-coral">{contact.phoneError}</p>}
       </div>
 
@@ -172,21 +186,14 @@ export function ContactFields({
           className={inputClass}
           value={data.correo}
           onChange={(event) => update("correo", event.target.value)}
-          aria-invalid={showError("contacto") || showError("correo")}
-          aria-describedby={showError("correo") ? errorId("correo") : describedBy("contacto")}
+          aria-invalid={emailMissing || showError("correo")}
+          aria-describedby={showError("correo") ? errorId("correo") : emailMissing ? errorId("contacto") : undefined}
         />
+        {emailMissing && !phoneMissing && contactError("mt-1")}
         {showError("correo") && <p id={errorId("correo")} role="alert" className="mt-1 text-xs text-coral">Revisa el formato del correo (por ejemplo, nombre@dominio.com).</p>}
       </div>
 
-      {showError("contacto") && (
-        <p id={errorId("contacto")} role="alert" className="-mt-3 text-xs text-coral sm:col-span-2">
-          {data.medioContacto === "whatsapp"
-            ? "Añade tu teléfono para contactarte por WhatsApp."
-            : data.medioContacto === "correo"
-              ? "Añade tu correo para contactarte por ese medio."
-              : "Déjanos al menos un teléfono o un correo."}
-        </p>
-      )}
+      {phoneMissing && emailMissing && contactError("-mt-3 sm:col-span-2")}
 
       <div className="sm:col-span-2">
         <label htmlFor="medioContacto" className="text-sm font-medium text-navy">Medio de contacto preferido</label>
@@ -211,7 +218,7 @@ export function ContactFields({
         {contact.privacyNotice.text}{" "}
         <a href="/privacidad" target="_blank" rel="noopener noreferrer" className="underline">
           {contact.privacyNotice.linkLabel}
-          <span className="sr-only"> {contact.privacyNotice.newTabHint}</span>
+          <span className="sr-only"> {newTabHint}</span>
         </a>.
       </p>
     </div>

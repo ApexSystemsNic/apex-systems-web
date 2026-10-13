@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { navLinks, headerCta } from "@/content/site-content";
+import { navLinks, headerCta, newTabHint } from "@/content/site/navigation";
 import { LinkButton } from "@/components/ui/Button";
 import { whatsappUrl } from "@/content/contact-channels";
 import MobileMenu from "./MobileMenu";
@@ -12,6 +12,7 @@ export default function Header() {
   const headerRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const shouldRestoreFocus = useRef(false);
+  const cancelSwallowedClick = useRef<(() => void) | null>(null);
 
   function closeAndRestoreFocus() {
     shouldRestoreFocus.current = true;
@@ -56,6 +57,8 @@ export default function Header() {
     };
   }, []);
 
+  useEffect(() => () => cancelSwallowedClick.current?.(), []);
+
   useEffect(() => {
     if (!menuOpen && shouldRestoreFocus.current) {
       shouldRestoreFocus.current = false;
@@ -82,12 +85,36 @@ export default function Header() {
       }
     }
 
+    // Tocar o clicar fuera del encabezado cierra el menú. El fondo está inerte,
+    // así que el evento llega a document con otro destino (body/html).
+    function onPointerDown(event: PointerEvent) {
+      if (!headerRef.current?.contains(event.target as Node)) {
+        setMenuOpen(false);
+        // El fondo deja de estar inerte antes de que termine el gesto: se traga
+        // el clic que le sigue para que no active lo que quedó bajo el dedo.
+        cancelSwallowedClick.current?.();
+        const swallow = (click: MouseEvent) => {
+          click.preventDefault();
+          click.stopPropagation();
+        };
+        document.addEventListener("click", swallow, { capture: true, once: true });
+        const timeout = window.setTimeout(() => cancelSwallowedClick.current?.(), 400);
+        cancelSwallowedClick.current = () => {
+          window.clearTimeout(timeout);
+          document.removeEventListener("click", swallow, true);
+          cancelSwallowedClick.current = null;
+        };
+      }
+    }
+
     document.addEventListener("keydown", onKeyDown);
     document.addEventListener("focusin", onFocusIn);
+    document.addEventListener("pointerdown", onPointerDown);
 
     return () => {
       document.removeEventListener("keydown", onKeyDown);
       document.removeEventListener("focusin", onFocusIn);
+      document.removeEventListener("pointerdown", onPointerDown);
     };
   }, [menuOpen]);
 
@@ -106,7 +133,7 @@ export default function Header() {
         >
           <Image
             src="/apex-logo-96.png"
-            alt="Apex Systems"
+            alt=""
             width={40}
             height={40}
             priority
@@ -130,7 +157,7 @@ export default function Header() {
             >
               {link.label}
 
-              <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-sky transition-[width] duration-200 group-hover:w-full" />
+              <span className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-sky transition-transform duration-200 group-hover:scale-x-100" />
             </a>
           ))}
         </nav>
@@ -145,6 +172,7 @@ export default function Header() {
             title="Abrir WhatsApp para cotizar"
           >
             {headerCta}
+            <span className="sr-only"> {newTabHint}</span>
           </LinkButton>
         </div>
 

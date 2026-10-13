@@ -1,7 +1,8 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
-import { useRef, useState } from "react";
+import { AnimatePresence, LazyMotion, domAnimation } from "motion/react";
+import * as m from "motion/react-m";
+import { useRef, useState, type CSSProperties } from "react";
 import { process } from "@/content/site-content";
 import { LinkButton } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
@@ -11,6 +12,8 @@ export default function Process() {
   const [activeIndex, setActiveIndex] = useState(0);
   const active = process.steps[activeIndex];
   const progress = ((activeIndex + 1) / process.steps.length) * 100;
+  // `--progress` (0–1) expone el avance al CSS para animarlo con transform.
+  const progressVar = { "--progress": progress / 100 } as CSSProperties;
 
   // El foco va al título solo cuando Anterior/Siguiente deja de estar disponible
   // (paso 1 o último); en los demás pasos se queda en el botón y anuncia aria-live.
@@ -46,11 +49,11 @@ export default function Process() {
         </div>
       </Reveal>
 
-      <Reveal delay={0.08} className="relative mt-12">
+      <Reveal className="relative mt-12">
         <div className="process-workspace">
           <div className="process-workspace__nav" role="group" aria-label="Etapas del proceso">
             <div className="process-workspace__progress" aria-hidden="true">
-              <span style={{ height: `${progress}%` }} />
+              <span style={progressVar} />
             </div>
             <ol>
               {process.steps.map((step, index) => {
@@ -78,27 +81,29 @@ export default function Process() {
           <div id="process-detail" className="process-workspace__detail" aria-live="polite">
             <div className="process-workspace__topline">
               <span>Paso {activeIndex + 1} de {process.steps.length}</span>
-              <div><i style={{ width: `${progress}%` }} /></div>
+              <div><i style={progressVar} /></div>
             </div>
 
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.div
-                key={active.number}
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                className="process-workspace__active"
-              >
-                <span className="process-workspace__giant-number" aria-hidden="true">{active.number}</span>
-                <div className="process-workspace__icon" aria-hidden="true">
-                  <span>{active.number}</span>
-                  <i /><i /><i />
-                </div>
-                <h3 ref={titleRef} tabIndex={-1}>{active.title}</h3>
-                <p>{active.description}</p>
-              </motion.div>
-            </AnimatePresence>
+            <LazyMotion features={domAnimation} strict>
+              <AnimatePresence mode="wait" initial={false}>
+                <m.div
+                  key={active.number}
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="process-workspace__active"
+                >
+                  <span className="process-workspace__giant-number" aria-hidden="true">{active.number}</span>
+                  <div className="process-workspace__icon" aria-hidden="true">
+                    <span>{active.number}</span>
+                    <i /><i /><i />
+                  </div>
+                  <h3 ref={titleRef} tabIndex={-1}>{active.title}</h3>
+                  <p>{active.description}</p>
+                </m.div>
+              </AnimatePresence>
+            </LazyMotion>
 
             <div className="process-workspace__controls">
               <button type="button" onClick={() => selectStep(activeIndex - 1, activeIndex === 1)} disabled={activeIndex === 0}>

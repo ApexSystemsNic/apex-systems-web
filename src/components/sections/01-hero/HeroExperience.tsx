@@ -1,6 +1,7 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, LazyMotion, domAnimation } from "motion/react";
+import * as m from "motion/react-m";
 import { useState } from "react";
 import { solutions } from "@/content/site-content";
 import { HeroPointerGlow } from "./HeroPointerGlow";
@@ -94,75 +95,75 @@ export function HeroExperience() {
   const Preview = previews[active.id];
 
   return (
-    <div className="hero-demo group relative" aria-label="Demostración interactiva de soluciones Apex">
-      <div className="hero-demo__aura" aria-hidden="true" />
-      <HeroPointerGlow />
+    <LazyMotion features={domAnimation} strict>
+      <div className="hero-demo group relative" role="group" aria-label="Demostración interactiva de soluciones Apex">
+        <div className="hero-demo__aura" aria-hidden="true" />
+        <HeroPointerGlow />
 
-      <div className="hero-demo__window">
-        <div className="hero-demo__toolbar" aria-hidden="true">
-          <div className="flex gap-1.5"><span /><span /><span /></div>
-          <div className="hero-demo__address">Apex / vista interactiva</div>
-          <div className="hero-demo__signal" />
-        </div>
-
-        <div className="hero-demo__body">
-          <div className="hero-demo__switcher" role="group" aria-label="Explorar tipo de solución">
-            {modes.map((mode) => (
-              <button
-                key={mode.id}
-                type="button"
-                id={`hero-tab-${mode.id}`}
-                aria-pressed={mode.id === active.id}
-                aria-controls="hero-preview-panel"
-                onClick={() => setActiveId(mode.id)}
-                className={mode.id === active.id ? "is-active" : ""}
-              >
-                <span>{mode.short}</span>
-              </button>
-            ))}
+        <div className="hero-demo__window">
+          <div className="hero-demo__toolbar" aria-hidden="true">
+            <div className="flex gap-1.5"><span /><span /><span /></div>
+            <div className="hero-demo__address">Apex / vista interactiva</div>
+            <div className="hero-demo__signal" />
           </div>
 
-          <div
-            id="hero-preview-panel"
-            aria-live="polite"
-            className="hero-demo__preview" data-motion-scene
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.div
-                key={active.id}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                className="h-full"
-              >
-                <Preview />
-              </motion.div>
-            </AnimatePresence>
-          </div>
+          <div className="hero-demo__body">
+            <div className="hero-demo__switcher" role="group" aria-label="Explorar tipo de solución">
+              {modes.map((mode) => (
+                <button
+                  key={mode.id}
+                  type="button"
+                  aria-pressed={mode.id === active.id}
+                  aria-controls="hero-preview-panel"
+                  onClick={() => setActiveId(mode.id)}
+                  className={mode.id === active.id ? "is-active" : ""}
+                >
+                  <span>{mode.short}</span>
+                </button>
+              ))}
+            </div>
 
-          <div className="hero-demo__footer">
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.div
-                key={`${active.id}-copy`}
-                initial={{ opacity: 0, x: -8 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 8 }}
-                transition={{ duration: 0.25 }}
-                className="hero-demo__caption"
-              >
-                <span>{active.solution.number}</span>
-                <p>{active.solution.hook}</p>
-              </motion.div>
-            </AnimatePresence>
+            <div
+              id="hero-preview-panel"
+              className="hero-demo__preview" data-motion-scene
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <m.div
+                  key={active.id}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+                  className="h-full"
+                >
+                  <Preview />
+                </m.div>
+              </AnimatePresence>
+            </div>
 
-            <div className="hero-demo__hint" aria-hidden="true">
-              <span className="hero-demo__hint-dot" />
-              Elige una solución
+            <div className="hero-demo__footer" aria-live="polite">
+              <AnimatePresence mode="wait" initial={false}>
+                <m.div
+                  key={`${active.id}-copy`}
+                  initial={{ opacity: 0, x: -8 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 8 }}
+                  transition={{ duration: 0.25 }}
+                  className="hero-demo__caption"
+                >
+                  <span aria-hidden="true">{active.solution.number}</span>
+                  <p>{active.solution.hook}</p>
+                </m.div>
+              </AnimatePresence>
+
+              <div className="hero-demo__hint" aria-hidden="true">
+                <span className="hero-demo__hint-dot" />
+                Elige una solución
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </LazyMotion>
   );
 }

@@ -1,6 +1,4 @@
-"use client";
-
-import { navLinks, headerCta } from "@/content/site-content";
+import { navLinks, headerCta, newTabHint } from "@/content/site/navigation";
 import { whatsappUrl } from "@/content/contact-channels";
 
 /** Overlay: opening the menu must not resize the sticky header or page. */
@@ -40,6 +38,7 @@ export default function MobileMenu({
           className="mt-3 flex min-h-11 items-center justify-center rounded-full border border-sky bg-sky px-5 text-center text-base font-semibold text-navy"
         >
           {headerCta}
+          <span className="sr-only"> {newTabHint}</span>
         </a>
       </div>
     </nav>

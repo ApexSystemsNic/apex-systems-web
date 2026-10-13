@@ -10,3 +10,6 @@ export const navLinks: NavLink[] = [
 ];
 
 export const headerCta = "Cotizar por WhatsApp";
+
+/** Aviso para lectores de pantalla en los enlaces que abren otra pestaña. */
+export const newTabHint = "(abre otra pestaña)";

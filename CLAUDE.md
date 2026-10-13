@@ -53,7 +53,7 @@ En PowerShell usa `npm.cmd` si la política de scripts bloquea `npm`.
 | `npm run typecheck` | `tsc --noEmit`. |
 | `npm run build` | Export estático a `out/`. |
 | `npm run check` | lint + typecheck + build. Obligatorio antes de entregar. |
-| `npm run check:deploy` | Valida `SITE_URL` y ejecuta `check`. Antes de publicar. |
+| `npm run check:deploy` | Valida `SITE_URL` si está definida, ejecuta `check` y verifica el export en `out/`. Antes de publicar. |
 | `npm run preview` | Sirve `out/` localmente. |
 
 ## Convenciones
@@ -64,7 +64,7 @@ En PowerShell usa `npm.cmd` si la política de scripts bloquea `npm`.
 - Componentes de servidor por defecto; `"use client"` solo cuando hay estado, efectos o eventos.
 - React Compiler está activo: no agregues `useMemo`/`useCallback`/`memo` sin una razón medida.
 - Imports con el alias `@/`.
-- Movimiento, estado actual: `MotionProvider` envuelve el sitio en `MotionConfig reducedMotion="user"`, así que las animaciones hechas con Motion siguen la preferencia del visitante; además pausa las escenas `[data-motion-scene]` fuera del viewport o con la pestaña oculta. Las animaciones CSS se ajustan con bloques `@media (prefers-reduced-motion: …)` en `src/styles/`, y el JS que anima por su cuenta (`PreloaderTimer`, `HeroPointerGlow`) consulta `matchMedia`. `Reveal`, `MaskReveal`, `WordReveal`, `StaggerList` y `StaggerItem` (`src/components/ui/MotionPrimitives.tsx`) son hoy envoltorios sin animación que ignoran `delay`: no gestionan movimiento reducido.
+- Movimiento, estado actual: `MotionProvider` envuelve el sitio en `MotionConfig reducedMotion="user"`, así que las animaciones hechas con Motion siguen la preferencia del visitante; además pausa las escenas `[data-motion-scene]` fuera del viewport o con la pestaña oculta. Las animaciones CSS se ajustan con bloques `@media (prefers-reduced-motion: …)` en `src/styles/`, y el JS que anima por su cuenta (`PreloaderTimer`, `HeroPointerGlow`) consulta `matchMedia`. `Reveal`, `MaskReveal`, `WordReveal`, `StaggerList` y `StaggerItem` (`src/components/ui/MotionPrimitives.tsx`) son hoy envoltorios sin animación: no gestionan movimiento reducido.
 - Movimiento, convención para animaciones nuevas: toda animación debe respetar `prefers-reduced-motion`. Con Motion, dentro de `MotionProvider`; con CSS, con su bloque `@media (prefers-reduced-motion: reduce)`; con JS propio, consultando `matchMedia`. Si se devuelve animación a los envoltorios `Reveal`, deben cumplirlo ellos mismos.
 - Metadatos con `buildPageMetadata` y URL pública con `getSiteUrl`; no escribas el dominio a mano.
 - Contenido, comentarios y mensajes de commit en español.

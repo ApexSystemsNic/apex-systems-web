@@ -1,5 +1,5 @@
 export { brand } from "./site/brand";
-export { navLinks, headerCta } from "./site/navigation";
+export { navLinks, headerCta, newTabHint } from "./site/navigation";
 export { hero } from "./site/hero";
 export { audience } from "./site/audience";
 export { aboutApex } from "./site/about";

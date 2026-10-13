@@ -150,6 +150,16 @@ html[data-motion-paused="true"] [data-motion-scene] * { animation-play-state: pa
   .audience-float--one { left: .4rem; }
   .audience-float--two { right: .4rem; }
 }
+/* Escritorio con poca altura: se compacta el ritmo vertical del hero para que
+   el CTA principal quede sobre el pliegue. Los selectores de hermanos siguen
+   el orden de Hero.tsx: h1, párrafo, fila de botones. Solo escritorio: en
+   móvil el alto cambia al ocultarse la barra del navegador y saltaría. */
+@media (min-width: 1024px) and (max-height: 800px) {
+  .hero-section > .grid { padding-top: 2.5rem; }
+  .hero-title { margin-top: 1rem; font-size: clamp(2.25rem, 1.3rem + 3vw, 3.5rem); }
+  .hero-title + div > p { margin-top: 1.25rem; }
+  .hero-title + div + div > div { margin-top: 1.75rem; }
+}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }

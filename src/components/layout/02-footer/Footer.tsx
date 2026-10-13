@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { footer, navLinks } from "@/content/site-content";
+import { footer, navLinks, newTabHint } from "@/content/site-content";
 import { socialLinks } from "@/content/contact-channels";
 
 export default function Footer() {
@@ -13,7 +13,7 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               <Image
                 src="/apex-logo-96.png"
-                alt="Apex Systems"
+                alt=""
                 width={36}
                 height={36}
                 className="h-9 w-9 rounded-lg"
@@ -34,7 +34,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <div>
+          <nav aria-label={footer.navLabel}>
             <p className="text-sm font-semibold text-white">
               Navegación
             </p>
@@ -51,9 +51,9 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          <div>
+          <nav aria-label={footer.solutionsLabel}>
             <p className="text-sm font-semibold text-white">
               Soluciones
             </p>
@@ -79,7 +79,7 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
+          </nav>
 
           <div>
             <p className="text-sm font-semibold text-white">
@@ -100,7 +100,7 @@ export default function Footer() {
                     }
                   >
                     {link.label}
-                    {link.icon !== "mail" && <><span aria-hidden="true"> ↗</span><span className="sr-only"> (abre otra pestaña)</span></>}
+                    {link.icon !== "mail" && <><span aria-hidden="true"> ↗</span><span className="sr-only"> {newTabHint}</span></>}
                   </a>
                 </li>
               ))}

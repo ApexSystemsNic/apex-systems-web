@@ -9,6 +9,8 @@ export const footer = {
     { label: "Aplicaciones móviles para negocios", href: "/#soluciones" },
   ],
   maintenanceLink: { label: "Mantenimiento para clientes", href: "/#mantenimiento" },
+  navLabel: "Secciones del sitio",
+  solutionsLabel: "Soluciones",
   legalLabel: "Legal",
   legalLinks: [
     { label: "Política de privacidad", href: "/privacidad" },

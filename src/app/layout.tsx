@@ -5,7 +5,7 @@ import { Preloader } from "@/components/sections/00-preloader/Preloader";
 import MotionProvider from "@/components/ui/MotionProvider";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { getSiteUrl } from "@/lib/site-url";
-import { buildStructuredData } from "@/lib/structured-data";
+import { buildStructuredData, serializeStructuredData } from "@/lib/structured-data";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -45,7 +45,7 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col bg-background text-foreground">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(buildStructuredData(getSiteUrl())) }}
+          dangerouslySetInnerHTML={{ __html: serializeStructuredData(buildStructuredData(getSiteUrl())) }}
         />
         <Preloader />
 

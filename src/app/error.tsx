@@ -28,7 +28,7 @@ export default function Error({
 
   return (
     <div id="contenido" className="flex min-h-[60vh] flex-col items-center justify-center px-6 py-24 text-center">
-      <p className="font-mono text-sm text-navy/60">Algo salió mal</p>
+      <p className="font-mono text-sm text-navy/70">Algo salió mal</p>
       <h1 className="mt-3 text-2xl font-bold tracking-tight text-navy sm:text-3xl">
         Ocurrió un error inesperado al cargar esta sección.
       </h1>

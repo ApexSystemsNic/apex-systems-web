@@ -34,6 +34,7 @@ export function ContactFields({
           <label htmlFor="nombre" className="text-sm font-medium text-navy">Nombre y apellido</label>
           <input
             id="nombre"
+            aria-required="true"
             autoComplete="name"
             maxLength={MAX_LENGTH.nombre}
             className={inputClass}
@@ -49,6 +50,7 @@ export function ContactFields({
           <label htmlFor="negocio" className="text-sm font-medium text-navy">Nombre del negocio</label>
           <input
             id="negocio"
+            aria-required="true"
             autoComplete="organization"
             maxLength={MAX_LENGTH.negocio}
             className={inputClass}
@@ -64,6 +66,7 @@ export function ContactFields({
           <label htmlFor="categoria" className="text-sm font-medium text-navy">Tipo de negocio</label>
           <input
             id="categoria"
+            aria-required="true"
             placeholder="Restaurante, tienda, consultoría..."
             maxLength={MAX_LENGTH.categoria}
             className={inputClass}
@@ -85,6 +88,7 @@ export function ContactFields({
           <label htmlFor="solucion" className="text-sm font-medium text-navy">Solución de interés</label>
           <select
             id="solucion"
+            aria-required="true"
             className={inputClass}
             value={data.solucion}
             onChange={(event) => update("solucion", event.target.value)}
@@ -111,6 +115,7 @@ export function ContactFields({
           <label htmlFor="descripcion" className="text-sm font-medium text-navy">Necesidad que quieres resolver</label>
           <textarea
             id="descripcion"
+            aria-required="true"
             rows={4}
             maxLength={MAX_LENGTH.descripcion}
             className={inputClass}
@@ -145,14 +150,16 @@ export function ContactFields({
         <input
           id="telefono"
           type="tel"
+          inputMode="tel"
           autoComplete="tel"
           maxLength={MAX_LENGTH.telefono}
           className={inputClass}
           value={data.telefono}
           onChange={(event) => update("telefono", event.target.value)}
-          aria-invalid={showError("contacto")}
-          aria-describedby={describedBy("contacto")}
+          aria-invalid={showError("contacto") || showError("telefono")}
+          aria-describedby={showError("telefono") ? errorId("telefono") : describedBy("contacto")}
         />
+        {showError("telefono") && <p id={errorId("telefono")} role="alert" className="mt-1 text-xs text-coral">{contact.phoneError}</p>}
       </div>
 
       <div>
@@ -185,6 +192,7 @@ export function ContactFields({
         <label htmlFor="medioContacto" className="text-sm font-medium text-navy">Medio de contacto preferido</label>
         <select
           id="medioContacto"
+          aria-required="true"
           className={inputClass}
           value={data.medioContacto}
           onChange={(event) => update("medioContacto", event.target.value)}
@@ -199,20 +207,13 @@ export function ContactFields({
         {showError("medioContacto") && <p id={errorId("medioContacto")} role="alert" className="mt-1 text-xs text-coral">Indica cómo prefieres que te contactemos.</p>}
       </div>
 
-      <div className="sm:col-span-2">
-        <label className="flex items-start gap-3 text-sm text-foreground/80">
-          <input
-            type="checkbox"
-            className="mt-0.5 h-5 w-5 flex-none rounded border-line"
-            checked={data.aceptaPrivacidad}
-            onChange={(event) => update("aceptaPrivacidad", event.target.checked)}
-            aria-invalid={showError("aceptaPrivacidad")}
-            aria-describedby={describedBy("aceptaPrivacidad")}
-          />
-          <span>He leído y acepto la <a href="/privacidad" className="underline">política de privacidad</a>.</span>
-        </label>
-        {showError("aceptaPrivacidad") && <p id={errorId("aceptaPrivacidad")} role="alert" className="mt-1 text-xs text-coral">Necesitamos tu aceptación para continuar.</p>}
-      </div>
+      <p className="text-sm leading-relaxed text-foreground/80 sm:col-span-2">
+        {contact.privacyNotice.text}{" "}
+        <a href="/privacidad" target="_blank" rel="noopener noreferrer" className="underline">
+          {contact.privacyNotice.linkLabel}
+          <span className="sr-only"> {contact.privacyNotice.newTabHint}</span>
+        </a>.
+      </p>
     </div>
   );
 }

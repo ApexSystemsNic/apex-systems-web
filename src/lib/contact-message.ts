@@ -10,7 +10,6 @@ export type ContactFormData = {
   telefono: string;
   correo: string;
   medioContacto: string;
-  aceptaPrivacidad: boolean;
 };
 
 export const emptyContactFormData: ContactFormData = {
@@ -23,12 +22,11 @@ export const emptyContactFormData: ContactFormData = {
   telefono: "",
   correo: "",
   medioContacto: "",
-  aceptaPrivacidad: false,
 };
 
 /** Builds the WhatsApp message from the form data without storing it. */
 export function buildContactMessage(data: ContactFormData, solutionLabel: string): string {
-  const fields: Record<string, string> = { ...data, aceptaPrivacidad: "", solucion: solutionLabel };
+  const fields: Record<string, string> = { ...data, solucion: solutionLabel };
   // Single-pass callback: dollar signs and template-like user text must
   // remain literal, not become replacement syntax or nested placeholders.
   const body = contactMessageTemplate.replace(/\{\{(nombre|negocio|solucion|categoria|descripcion)\}\}/g,

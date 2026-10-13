@@ -22,7 +22,7 @@ export default function NotFound() {
       <Header />
       <main id="contenido" className="flex-1">
         <div className="mx-auto flex w-full max-w-legal flex-col items-start px-6 py-24 sm:px-8 sm:py-32">
-          <p className="font-mono text-sm text-navy/60">Error 404</p>
+          <p className="font-mono text-sm text-navy/70">Error 404</p>
           <h1 className="mt-3 text-3xl font-bold tracking-tight text-navy sm:text-4xl">
             No encontramos esta página.
           </h1>

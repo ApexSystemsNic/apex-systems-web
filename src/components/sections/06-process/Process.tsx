@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { process } from "@/content/site-content";
 import { LinkButton } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
@@ -12,8 +12,21 @@ export default function Process() {
   const active = process.steps[activeIndex];
   const progress = ((activeIndex + 1) / process.steps.length) * 100;
 
-  function selectStep(index: number) {
+  // El foco va al título solo cuando Anterior/Siguiente deja de estar disponible
+  // (paso 1 o último); en los demás pasos se queda en el botón y anuncia aria-live.
+  const focusTitle = useRef(false);
+
+  function selectStep(index: number, moveFocus = false) {
+    focusTitle.current = moveFocus;
     setActiveIndex(Math.max(0, Math.min(process.steps.length - 1, index)));
+  }
+
+  // El h3 nuevo se monta al terminar la salida de AnimatePresence: se enfoca ahí.
+  function titleRef(node: HTMLHeadingElement | null) {
+    if (node && focusTitle.current) {
+      focusTitle.current = false;
+      node.focus();
+    }
   }
 
   return (
@@ -35,7 +48,7 @@ export default function Process() {
 
       <Reveal delay={0.08} className="relative mt-12">
         <div className="process-workspace">
-          <div className="process-workspace__nav" aria-label="Etapas del proceso">
+          <div className="process-workspace__nav" role="group" aria-label="Etapas del proceso">
             <div className="process-workspace__progress" aria-hidden="true">
               <span style={{ height: `${progress}%` }} />
             </div>
@@ -77,22 +90,22 @@ export default function Process() {
                 transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 className="process-workspace__active"
               >
-                <span className="process-workspace__giant-number">{active.number}</span>
+                <span className="process-workspace__giant-number" aria-hidden="true">{active.number}</span>
                 <div className="process-workspace__icon" aria-hidden="true">
                   <span>{active.number}</span>
                   <i /><i /><i />
                 </div>
-                <h3>{active.title}</h3>
+                <h3 ref={titleRef} tabIndex={-1}>{active.title}</h3>
                 <p>{active.description}</p>
               </motion.div>
             </AnimatePresence>
 
             <div className="process-workspace__controls">
-              <button type="button" onClick={() => selectStep(activeIndex - 1)} disabled={activeIndex === 0}>
+              <button type="button" onClick={() => selectStep(activeIndex - 1, activeIndex === 1)} disabled={activeIndex === 0}>
                 <span aria-hidden="true">←</span> Anterior
               </button>
               {activeIndex < process.steps.length - 1 ? (
-                <button type="button" onClick={() => selectStep(activeIndex + 1)}>
+                <button type="button" onClick={() => selectStep(activeIndex + 1, activeIndex === process.steps.length - 2)}>
                   Siguiente <span aria-hidden="true">→</span>
                 </button>
               ) : (

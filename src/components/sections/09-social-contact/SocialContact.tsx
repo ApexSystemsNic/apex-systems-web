@@ -20,13 +20,13 @@ export default function SocialContact() {
         <p className="section-kicker section-kicker--light">Estamos a una conversación</p>
         <h2>Tu próxima idea<br/><span>puede empezar aquí.</span></h2>
         <p>Escríbenos por el canal que prefieras. Cuéntanos qué tienes en mente y conversemos sobre tu negocio.</p>
-        <a href="#contacto" className="social-project">Prefiero contarles mi proyecto <span aria-hidden="true">↗</span></a>
+        <a href="#contacto" className="social-project">Prefiero contarles mi proyecto</a>
       </div>
       <div className="social-links">
-        {socialLinks.map(link => <a key={link.label} href={link.href} target={link.icon === "mail" ? undefined : "_blank"} rel={link.icon === "mail" ? undefined : "noopener noreferrer"} aria-label={`${link.label}: ${link.detail}${link.icon === "mail" ? "" : " (abre otra pestaña)"}`}>
+        {socialLinks.map(link => <a key={link.label} href={link.href} target={link.icon === "mail" ? undefined : "_blank"} rel={link.icon === "mail" ? undefined : "noopener noreferrer"}>
           <span className={`social-icon social-icon--${link.icon}`}><SocialIcon kind={link.icon}/></span>
-          <span className="social-link-text"><strong>{link.label}</strong><small>{link.detail}</small></span>
-          <span className="social-arrow" aria-hidden="true">↗</span>
+          <span className="social-link-text"><strong>{link.label}</strong>{" "}<small>{link.detail}</small></span>
+          {link.icon !== "mail" && <><span className="social-arrow" aria-hidden="true">↗</span><span className="sr-only"> (abre otra pestaña)</span></>}
         </a>)}
       </div>
     </Reveal>

@@ -140,7 +140,7 @@ export default function Audience() {
                 </div>
 
                 <div className="audience-explorer__content">
-                  <span className={`font-mono text-sm font-semibold ${accentClasses[accent].split(" ")[0]}`}>
+                  <span className="font-mono text-sm font-semibold text-navy">
                     0{activeIndex + 1} / 04
                   </span>
                   <h3>{active.title}</h3>

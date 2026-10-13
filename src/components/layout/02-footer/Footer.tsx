@@ -99,7 +99,8 @@ export default function Footer() {
                         : "noopener noreferrer"
                     }
                   >
-                    {link.label} ↗
+                    {link.label}
+                    {link.icon !== "mail" && <><span aria-hidden="true"> ↗</span><span className="sr-only"> (abre otra pestaña)</span></>}
                   </a>
                 </li>
               ))}
@@ -107,10 +108,25 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-white/10 pt-6">
-          <p className="text-center text-xs text-white/45 sm:text-left">
+        <div className="mt-8 flex flex-col items-center gap-3 border-t border-white/10 pt-6 sm:flex-row sm:justify-between">
+          <p className="text-center text-xs text-white/60 sm:text-left">
             © {year} Apex Systems. Todos los derechos reservados.
           </p>
+
+          <nav aria-label={footer.legalLabel}>
+            <ul className="flex flex-wrap justify-center gap-x-5 gap-y-1">
+              {footer.legalLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className="inline-flex min-h-6 items-center text-xs text-white/75 underline-offset-4 transition-colors hover:text-sky hover:underline"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </div>
     </footer>

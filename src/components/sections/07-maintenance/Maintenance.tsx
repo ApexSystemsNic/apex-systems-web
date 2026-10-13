@@ -5,7 +5,7 @@ import MaintenanceTimeline from "./MaintenanceTimeline";
 
 export default function Maintenance() {
   return (
-    <section className="maintenance-section relative overflow-hidden bg-navy text-white">
+    <section id="mantenimiento" className="maintenance-section relative overflow-hidden bg-navy text-white">
       <div className="maintenance-grid" aria-hidden="true" />
       <div className="maintenance-glow" aria-hidden="true" />
 

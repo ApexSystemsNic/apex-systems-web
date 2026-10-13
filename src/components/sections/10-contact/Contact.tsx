@@ -119,17 +119,17 @@ export default function Contact() {
                 />
 
                 <div className="contact-actions mt-6 flex items-center justify-between gap-3">
-                  <ActionButton
-                    type="button"
-                    variant="secondary"
-                    onClick={() => setStep((current) => Math.max(1, current - 1))}
-                    disabled={step === 1}
-                    className={step === 1 ? "invisible" : ""}
-                  >
-                    Atrás
-                  </ActionButton>
+                  {step > 1 && (
+                    <ActionButton
+                      type="button"
+                      variant="secondary"
+                      onClick={() => setStep((current) => Math.max(1, current - 1))}
+                    >
+                      Atrás
+                    </ActionButton>
+                  )}
 
-                  <ActionButton type="submit" variant="primary">
+                  <ActionButton type="submit" variant="primary" className={step === 1 ? "min-[430px]:ml-auto" : ""}>
                     {step < 3
                       ? step === 1
                         ? "Siguiente: tu proyecto"

@@ -19,14 +19,14 @@ export default function MobileMenu({
       hidden={!open}
       className="mobile-menu absolute inset-x-0 top-full overflow-y-auto border-t border-white/10 bg-navy shadow-lg xl:hidden"
     >
-      <div className="flex min-h-0 flex-col gap-1 px-6 py-4 sm:px-8">
+      <div className="flex min-h-0 flex-col gap-1 px-4 py-4 sm:px-8">
         {navLinks.map((link) => (
           <a
             key={link.href}
             href={link.href}
             tabIndex={open ? 0 : -1}
             onClick={onNavigate}
-            className="flex min-h-11 items-center rounded-lg px-3 text-base font-medium text-white/75 transition-colors hover:bg-white/[0.08] hover:text-white"
+            className="-mx-3 flex min-h-11 items-center rounded-lg px-3 text-base font-medium text-white/75 transition-colors hover:bg-white/[0.08] hover:text-white"
           >
             {link.label}
           </a>

@@ -6,6 +6,13 @@ export const CONTACT_LIMITS = {
 } as const;
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_PATTERN = /^\+?[0-9 ().-]+$/;
+
+/** Teléfono opcional: caracteres habituales y de 7 a 15 dígitos (E.164). */
+function isValidPhone(value: string): boolean {
+  const digits = value.replace(/\D/g, "").length;
+  return PHONE_PATTERN.test(value) && digits >= 7 && digits <= 15;
+}
 
 /** Local UX validation only; a future endpoint must validate independently. */
 export function getContactErrors(step: number, data: ContactFormData): string[] {
@@ -23,10 +30,9 @@ export function getContactErrors(step: number, data: ContactFormData): string[] 
     const phoneRequired = data.medioContacto === "whatsapp";
     const emailRequired = data.medioContacto === "correo";
     if ((!data.telefono.trim() && !data.correo.trim()) || (phoneRequired && !data.telefono.trim()) || (emailRequired && !data.correo.trim())) errors.push("contacto");
-    if (data.telefono.length > CONTACT_LIMITS.telefono) errors.push("telefono");
+    if (data.telefono.length > CONTACT_LIMITS.telefono || (data.telefono.trim() && !isValidPhone(data.telefono.trim()))) errors.push("telefono");
     if (data.correo.length > CONTACT_LIMITS.correo || (data.correo.trim() && !EMAIL_PATTERN.test(data.correo.trim()))) errors.push("correo");
     if (!["whatsapp", "correo", "cualquiera"].includes(data.medioContacto)) errors.push("medioContacto");
-    if (!data.aceptaPrivacidad) errors.push("aceptaPrivacidad");
   }
   return errors;
 }

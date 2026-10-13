@@ -1,8 +1,34 @@
 /* Keep focus rings visible and on-brand for keyboard navigation */
 :focus-visible {
-  outline: 2px solid var(--sky);
+  outline: 2px solid var(--navy);
   outline-offset: 3px;
-  border-radius: 2px;
+}
+/* El anillo necesita 3:1 contra el fondo: navy sobre claro, sky solo
+   dentro de superficies oscuras. */
+:is(.site-header, footer, .hero-section, .solutions-section, .about-section,
+  .maintenance-section, .social-panel, .final-cta, .audience-explorer__tabs,
+  .process-workspace__nav, .contact-preview) :focus-visible,
+.why-card.is-active :focus-visible {
+  outline-color: var(--sky);
+}
+/* El degradado del panel social llega a #256e8c: sky baja de 3:1, blanco no. */
+.social-panel :focus-visible {
+  outline-color: #fff;
+}
+/* La ventana del demo es blanca aunque viva dentro del hero oscuro. */
+.hero-demo__window :focus-visible {
+  outline-color: var(--navy);
+}
+/* "Saltar al contenido": anillo dentro de su propio fondo navy, legible
+   sobre cualquier cosa que tenga detrás. */
+a[href="#contenido"]:focus-visible {
+  outline-color: var(--sky);
+  outline-offset: -4px;
+}
+/* Los enlaces quedan a 4 px del borde del menú, que recorta: el anillo
+   (offset + 2 px) no puede pasar de ahí. */
+.mobile-menu a:focus-visible {
+  outline-offset: 2px;
 }
 
 /* Offset anchored sections so the sticky header never covers their heading */
@@ -36,14 +62,14 @@ section[id] {
 .audience-intro { display:grid; grid-template-columns:13rem 1fr; gap:1.5rem; margin-top:1.7rem; padding:1.3rem 0 0; border-top:1px solid var(--line); }
 .audience-intro>span { color:var(--navy); font-size:.85rem; font-weight:700; }
 .audience-intro p { max-width:72ch; color:#455a74; font-size:1rem; line-height:1.65; }
-.audience-explorer__content .audience-outcomes__label { font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.09em; color:#456078; margin-top:1.2rem; }
+.audience-explorer__content .audience-outcomes__label { font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.09em; color:#456078; margin-top:1.2rem; }
 .audience-explorer__content ul.audience-outcomes { display:grid; gap:0; margin:.4rem 0 1.4rem; }
 .audience-explorer__content .audience-outcomes li { display:flex; align-items:center; gap:.8rem; padding:.7rem 0; border:0; border-bottom:1px solid var(--line); border-radius:0; background:none; color:var(--navy); font-size:.9rem; }
-.audience-outcomes li span { color:#426079; font-family:monospace; font-size:.72rem; }
+.audience-outcomes li span { color:#426079; font-family:monospace; font-size:.75rem; }
 .why-card { padding:0; min-height:11rem; }
 .why-card>button { display:block; width:100%; height:100%; padding:1.35rem; cursor:pointer; text-align:left; }
 .why-card__topline { display:flex; gap:.8rem; align-items:center; padding-right:3rem; }
-.why-card__hint { color:#526781; font-size:.7rem; }
+.why-card__hint { color:#526781; font-size:.75rem; }
 .why-card.is-active { background:linear-gradient(135deg,#052b68,#06447e); border-color:#065c9a; box-shadow:0 20px 40px -25px #052b68; }
 .why-card.is-active h3 { color:white; }
 .why-card.is-active p { color:#dceafa; overflow:hidden; }

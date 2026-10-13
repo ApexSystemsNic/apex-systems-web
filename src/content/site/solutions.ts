@@ -94,6 +94,7 @@ export const solutions = {
         "Servicio mensual que puede incluir actualizaciones, optimización, solución de errores, contenido, copias de seguridad, monitoreo y revisión de seguridad según el alcance contratado.",
       includes: [],
       cta: "Conocer el mantenimiento",
+      href: "#mantenimiento",
       accent: "mint",
       visual: "support",
     },

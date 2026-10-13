@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { navLinks, headerCta } from "@/content/site-content";
 import { LinkButton } from "@/components/ui/Button";
@@ -10,6 +9,7 @@ import MobileMenu from "./MobileMenu";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const shouldRestoreFocus = useRef(false);
 
@@ -19,14 +19,24 @@ export default function Header() {
   }
 
   useEffect(() => {
-    const previousOverflow = document.body.style.overflow;
-
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
+    if (!menuOpen) {
+      return;
     }
+
+    const previousOverflow = document.body.style.overflow;
+    // Con el menú abierto el fondo no debe poder tocarse ni enfocarse.
+    const background = document.querySelectorAll<HTMLElement>("main, footer");
+
+    document.body.style.overflow = "hidden";
+    background.forEach((element) => {
+      element.inert = true;
+    });
 
     return () => {
       document.body.style.overflow = previousOverflow;
+      background.forEach((element) => {
+        element.inert = false;
+      });
     };
   }, [menuOpen]);
 
@@ -64,17 +74,32 @@ export default function Header() {
       }
     }
 
+    // Cierra si el foco cae fuera del encabezado, venga de donde venga
+    // (incluido "Saltar al contenido" al volver desde la barra del navegador).
+    function onFocusIn(event: FocusEvent) {
+      if (!headerRef.current?.contains(event.target as Node)) {
+        setMenuOpen(false);
+      }
+    }
+
     document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("focusin", onFocusIn);
 
     return () => {
       document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("focusin", onFocusIn);
     };
   }, [menuOpen]);
 
   return (
-    <header className="site-header sticky top-0 z-50 border-b border-white/10 bg-navy shadow-sm">
+    <header
+      ref={headerRef}
+      className="site-header sticky top-0 z-50 border-b border-white/10 bg-navy shadow-sm"
+    >
       <div className="mx-auto flex w-full max-w-page items-center justify-between gap-4 px-4 py-3 sm:px-8">
-        <Link
+        {/* <a> y no next/link: la navegación suave no reactiva las escenas de MotionProvider. */}
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+        <a
           href="/#inicio"
           onClick={() => setMenuOpen(false)}
           className="flex items-center gap-3 rounded-md"
@@ -91,7 +116,7 @@ export default function Header() {
           <span className="text-lg font-semibold tracking-tight text-white">
             Apex Systems
           </span>
-        </Link>
+        </a>
 
         <nav
           aria-label="Navegación principal"

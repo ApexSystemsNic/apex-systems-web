@@ -19,6 +19,8 @@ export type SolutionCard = {
   includes: string[];
   note?: string;
   cta: string;
+  /** Destino del CTA; por defecto, el formulario de contacto. */
+  href?: string;
   accent: "sky" | "coral" | "violet" | "mint";
   visual: "web" | "catalog" | "system" | "mobile" | "support";
   badge?: string;

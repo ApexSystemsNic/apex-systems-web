@@ -9,7 +9,7 @@ export default function FAQ() {
       <Reveal className="faq-heading">
         <SectionHeading eyebrow="Antes de empezar" title="Preguntas frecuentes" />
         <p className="mt-5 text-lg leading-relaxed text-foreground/75">Conoce cómo cotizamos, qué incluye cada proyecto y cómo te acompañamos después de la entrega.</p>
-        <a href="#contacto" className="mt-6 inline-block font-semibold text-navy underline underline-offset-4">¿Tienes otra pregunta? Conversemos ↗</a>
+        <a href="#contacto" className="mt-6 inline-block font-semibold text-navy underline underline-offset-4">¿Tienes otra pregunta? Conversemos</a>
       </Reveal>
 
       {/*

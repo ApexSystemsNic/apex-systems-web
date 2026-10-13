@@ -1,7 +1,7 @@
 export const STEP_LABELS = ["Tú y tu negocio", "Tu proyecto", "Cómo contactarte"];
 
 export const STEP_HELP = [
-  "Empecemos con tu nombre y el negocio para el que buscas una solución.",
+  "Empecemos con tu nombre y el negocio para el que buscas una solución. Los tres campos son obligatorios.",
   "Elige una solución y cuéntanos qué necesitas. El presupuesto es opcional.",
   "Indica un teléfono para WhatsApp o un correo, según el medio que prefieras.",
 ];

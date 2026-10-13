@@ -10,7 +10,7 @@ const variants: Record<Variant, string> = {
   secondary: "border border-line bg-surface text-navy shadow-sm hover:border-navy/30 hover:shadow-elevated",
   // For CTAs placed on the dark solution cards.
   inverse: "border border-white/25 bg-white/[0.04] text-white hover:border-white/55 hover:bg-white/[0.09]",
-  accent: "border border-sky bg-sky text-navy shadow-[0_12px_32px_-14px_rgba(22,184,255,0.95)] hover:border-white hover:bg-white",
+  accent: "border border-sky bg-sky text-navy shadow-[0_12px_32px_-14px_rgba(22,184,255,0.95)] hover:bg-[#4cc9ff]",
 };
 
 type CommonProps = {

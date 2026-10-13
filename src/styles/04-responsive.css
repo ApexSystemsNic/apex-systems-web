@@ -84,11 +84,14 @@ section[id], [tabindex="-1"] { scroll-margin-top: 5.5rem; }
 .apex-preloader[data-hidden="true"] { display: none; }
 @keyframes apex-preloader-dismiss { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
 
-/* Only illustrative scenes animate, only while visible. Static, usable
-   fallback before JS and if IntersectionObserver is unsupported. */
-[data-motion-scene] * { animation-play-state: paused; animation-iteration-count: 2; }
-[data-motion-scene][data-motion-active="true"] * { animation-play-state: running; }
-html[data-motion-paused="true"] [data-motion-scene] * { animation-play-state: paused; }
+/* Solo las escenas ilustrativas se animan, solo mientras están visibles y
+   como máximo dos ciclos. Quedan estáticas y usables antes de JS y si no
+   hay IntersectionObserver. `!important` es deliberado: los shorthand
+   `animation: … infinite` de las secciones tienen más especificidad y, sin
+   él, reanudaban la animación y quitaban el tope de ciclos. */
+[data-motion-scene] * { animation-play-state: paused !important; animation-iteration-count: 2 !important; }
+[data-motion-scene][data-motion-active="true"] * { animation-play-state: running !important; }
+html[data-motion-paused="true"] [data-motion-scene] * { animation-play-state: paused !important; }
 .hero-orb, .hero-demo__aura, .hero-demo__hint-dot, .hero-demo__product i,
 .audience-float, .audience-cart, .scroll-cue-line, .service-browser, .service-cursor,
 .catalog-chip, .system-node, .shield-ring--inner, .shield-status,
@@ -116,9 +119,13 @@ html[data-motion-paused="true"] [data-motion-scene] * { animation-play-state: pa
   .hero-demo__window, .hero-demo__body { min-height: 0; }
   .hero-demo__body { padding: .65rem; }
   .hero-demo__preview { height: 15rem; }
-  .hero-demo__switcher button { font-size: .7rem; padding-inline: .55rem; }
+  .hero-demo__switcher button { font-size: .75rem; padding-inline: .55rem; }
   .audience-explorer__panel-inner { grid-template-columns: 1fr; grid-template-rows: auto auto; }
-  .audience-explorer__visual { height: 16rem; min-height: 16rem; }
+  /* La insignia ocupa la franja superior: el visual gana alto y el teléfono
+     baja para quedar por debajo de ella. */
+  .audience-explorer__visual { height: 18rem; min-height: 18rem; }
+  .audience-phone { top: 58%; width: 8.5rem; height: 13rem; }
+  .audience-map { top: 57%; height: 64%; }
   .audience-explorer__tabs button { padding: .6rem; gap: .4rem; }
   .audience-explorer__content h3 { font-size: 1.8rem; }
   .solution-card h3, .process-workspace__active h3 { font-size: 1.9rem; }
@@ -132,6 +139,16 @@ html[data-motion-paused="true"] [data-motion-scene] * { animation-play-state: pa
   .social-panel { padding: 1.25rem; }
   .social-links > a { padding: .85rem; }
   .social-link-text strong { font-size: 1.05rem; }
+}
+@media (max-width: 374px) {
+  /* A dos columnas el título mide ~75 px y parte palabras: una columna. */
+  .audience-explorer__tabs,
+  .process-workspace__nav ol { grid-template-columns: 1fr; }
+  .audience-explorer__tabs strong,
+  .process-workspace__nav strong { overflow-wrap: break-word; }
+  /* Las etiquetas flotantes salen a los lados para no tapar el teléfono. */
+  .audience-float--one { left: .4rem; }
+  .audience-float--two { right: .4rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

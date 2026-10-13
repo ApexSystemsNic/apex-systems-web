@@ -108,7 +108,7 @@
   padding: 0.38rem 0.75rem;
   border: 1px solid var(--line);
   border-radius: 999px;
-  color: rgba(8, 26, 51, 0.54);
+  color: rgba(8, 26, 51, 0.62);
   font-family: var(--font-geist-mono), monospace;
   font-size: 0.62rem;
   text-align: center;
@@ -117,13 +117,13 @@
 .hero-demo__signal { justify-self: end; width: 0.55rem; height: 0.55rem; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 5px rgba(41, 199, 164, 0.12); }
 .hero-demo__body { position: relative; display: flex; min-height: 28.1rem; flex-direction: column; padding: 1rem; background: linear-gradient(180deg, #f8fbff, #eef5fb); }
 .hero-demo__switcher { display: flex; align-self: center; gap: 0.25rem; padding: 0.25rem; border: 1px solid var(--line); border-radius: 999px; background: white; box-shadow: 0 8px 30px -22px rgba(5, 43, 104, 0.8); }
-.hero-demo__switcher button { min-height: 2.15rem; padding: 0.35rem 0.85rem; border-radius: 999px; color: rgba(8, 26, 51, 0.58); font-size: 0.72rem; font-weight: 650; transition: 0.25s ease; }
+.hero-demo__switcher button { min-height: 2.15rem; padding: 0.35rem 0.85rem; border-radius: 999px; color: rgba(8, 26, 51, 0.65); font-size: 0.75rem; font-weight: 650; transition: 0.25s ease; }
 .hero-demo__switcher button:hover { color: var(--navy); }
 .hero-demo__switcher button.is-active { background: var(--navy); color: white; box-shadow: 0 8px 20px -12px rgba(5, 43, 104, 0.8); }
 .hero-demo__preview { height: 17rem; margin-top: 1rem; overflow: hidden; border: 1px solid rgba(5, 43, 104, 0.1); border-radius: 1.1rem; background: white; }
 .hero-demo__caption { display: flex; align-items: center; gap: 0.75rem; min-height: 3.2rem; margin-top: 0.85rem; padding: 0 0.25rem; color: var(--navy); }
-.hero-demo__caption > span { display: grid; width: 2rem; height: 2rem; place-items: center; flex: none; border-radius: 50%; background: rgba(22, 184, 255, 0.12); color: var(--sky); font-family: var(--font-geist-mono), monospace; font-size: 0.65rem; font-weight: 700; }
-.hero-demo__caption p { max-width: 44ch; font-size: 0.76rem; font-weight: 650; line-height: 1.35; }
+.hero-demo__caption > span { display: grid; width: 2rem; height: 2rem; place-items: center; flex: none; border-radius: 50%; background: rgba(22, 184, 255, 0.12); color: var(--navy); font-family: var(--font-geist-mono), monospace; font-size: 0.75rem; font-weight: 700; }
+.hero-demo__caption p { max-width: 44ch; font-size: 0.8125rem; font-weight: 650; line-height: 1.35; }
 .hero-demo__footer { display: flex; align-items: center; gap: 0.75rem; margin-top: 0.85rem; }
 .hero-demo__footer .hero-demo__caption { flex: 1; min-width: 0; margin-top: 0; }
 .hero-demo__hint { flex: none; white-space: nowrap; display: flex; align-items: center; gap: 0.45rem; padding: 0.65rem 0.8rem; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; background: rgba(3,29,73,.9); color: rgba(255,255,255,.72); font-size: 0.67rem; box-shadow: 0 14px 32px -18px rgba(0,0,0,.8); backdrop-filter: blur(10px); }

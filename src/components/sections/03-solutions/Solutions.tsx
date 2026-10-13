@@ -8,7 +8,7 @@ import type { ReactNode } from "react";
 const ACCENT_TEXT: Record<SolutionCard["accent"], string> = {
   sky: "text-sky",
   coral: "text-coral",
-  violet: "text-violet",
+  violet: "text-[#a99dff]",
   mint: "text-mint",
 };
 
@@ -183,7 +183,7 @@ export default function Solutions() {
                     {card.note && <p className="solution-card__note">{card.note}</p>}
 
                     <div className="mt-8">
-                      <LinkButton href="#contacto" variant="inverse">{card.cta}</LinkButton>
+                      <LinkButton href={card.href ?? "#contacto"} variant="inverse">{card.cta}</LinkButton>
                     </div>
                   </div>
 

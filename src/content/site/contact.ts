@@ -7,6 +7,13 @@ export const contact = {
   submitCta: "Enviar consulta por WhatsApp",
   pendingNotice:
     "Abrimos WhatsApp con tu consulta preparada. Revisa el mensaje y presiona Enviar para compartirlo con Apex Systems.",
+  phoneError:
+    "Revisa el teléfono: usa de 7 a 15 dígitos; puedes incluir +, espacios, paréntesis, guiones o puntos.",
+  privacyNotice: {
+    text: "Al finalizar abriremos WhatsApp con tu consulta preparada; el sitio no almacena tus datos. Más información en la",
+    linkLabel: "política de privacidad",
+    newTabHint: "(abre otra pestaña)",
+  },
   solutionOptions: [
     { value: "pagina-web", label: "Páginas web" },
     { value: "tienda-catalogo", label: "Tiendas y catálogos digitales" },

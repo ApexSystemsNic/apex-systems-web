@@ -12,11 +12,13 @@ export function buildPageMetadata({
   description,
   path,
   noindex = false,
+  image = socialImage,
 }: {
   title: string;
   description: string;
   path: string;
   noindex?: boolean;
+  image?: typeof socialImage;
 }): Metadata {
   return {
     title,
@@ -32,13 +34,13 @@ export function buildPageMetadata({
       locale: "es_NI",
       type: "website",
       url: path,
-      images: [socialImage],
+      images: [image],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [socialImage.url],
+      images: [image.url],
     },
   };
 }

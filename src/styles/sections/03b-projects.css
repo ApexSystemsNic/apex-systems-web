@@ -1,0 +1,89 @@
+/* ——— Proyectos: tarjetas de la home y páginas de caso ———
+   Sin animaciones propias: solo heredan las transiciones de LinkButton. */
+
+/* Tarjetas */
+.projects-grid { display: grid; gap: 1.5rem; }
+.project-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 1.75rem;
+  background: var(--surface);
+  box-shadow: var(--shadow-elevated);
+}
+.project-card__visual { position: relative; display: flex; flex-direction: column; }
+.project-card__visual > .project-visual { flex: 1; }
+.project-card__body { display: flex; flex: 1; flex-direction: column; padding: clamp(1.4rem, 3vw, 2.25rem); }
+.project-card__category { color: rgba(5, 43, 104, 0.78); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.project-card__title { margin-top: 0.6rem; color: var(--navy); font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2.1rem); font-weight: 650; line-height: 1.08; letter-spacing: -0.04em; }
+.project-card__summary { max-width: 52ch; margin-top: 0.9rem; color: rgba(8, 26, 51, 0.74); font-size: 1rem; line-height: 1.65; }
+
+@media (min-width: 1024px) {
+  .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem; }
+  .project-card--featured { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); }
+  .project-card--featured .project-card__body { justify-content: center; padding: 2.75rem; }
+  .project-card--featured .project-card__title { font-size: clamp(2rem, 2.8vw, 2.75rem); }
+  /* Dos tarjetas en pareja: misma proporción de imagen para que ambas alineen. */
+  .project-card:not(.project-card--featured) .project-card__visual { aspect-ratio: 4 / 3; }
+}
+
+/* Presentación visual común */
+.project-visual { position: relative; display: grid; min-height: 17rem; place-items: center; overflow: hidden; padding: clamp(1.25rem, 4vw, 2.5rem); }
+.project-visual__poster { position: relative; z-index: 1; display: flex; width: 100%; max-width: 34rem; flex-direction: column; align-items: flex-start; }
+/* Logos a 150 px CSS como máximo (originales de 300 px: nítidos en 2×); width/height de la etiqueta reservan la caja. */
+.project-visual__logo { max-width: min(9.375rem, 100%); height: auto; object-fit: contain; }
+.project-visual__tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.75rem; }
+.project-visual__tags li { padding: 0.4rem 0.75rem; border-radius: 999px; font-size: 0.8125rem; font-weight: 650; }
+@media (min-width: 640px) { .project-visual__tags li { padding: 0.45rem 0.85rem; font-size: 0.875rem; } }
+
+/* Body Factory Gym: negro y amarillo de marca, rojo solo como acento */
+/* La franja diagonal va pegada al borde derecho y el padding derecho reserva su ancho
+   máximo (--bf-bottom + filete rojo): ninguna etiqueta puede cruzarla en ningún ancho. */
+.project-visual--body-factory {
+  --bf-top: clamp(2rem, 6vw, 6rem);
+  --bf-bottom: calc(var(--bf-top) + clamp(1.5rem, 3vw, 3rem));
+  padding-right: calc(var(--bf-bottom) + 1.6rem);
+  background: #0d0d0d;
+  color: #fff;
+}
+.project-visual--body-factory::before,
+.project-visual--body-factory::after { position: absolute; inset: 0; content: ""; }
+.project-visual--body-factory::before { background: #f5c400; opacity: 0.92; clip-path: polygon(calc(100% - var(--bf-top)) 0, 100% 0, 100% 100%, calc(100% - var(--bf-bottom)) 100%); }
+.project-visual--body-factory::after { background: #d7262e; clip-path: polygon(calc(100% - var(--bf-top) - 0.9rem) 0, calc(100% - var(--bf-top) - 0.5rem) 0, calc(100% - var(--bf-bottom) - 0.5rem) 100%, calc(100% - var(--bf-bottom) - 0.9rem) 100%); }
+.project-visual--body-factory .project-visual__tags li { background: #f5c400; color: #111; }
+
+/* Finca Montecristo: capturas reales en marcos sencillos */
+.project-visual--montecristo { align-content: center; background: linear-gradient(150deg, #f1e9de 0%, #e2d4c2 100%); }
+.project-browser { overflow: hidden; width: 100%; border: 1px solid rgba(8, 26, 51, 0.12); border-radius: 0.9rem; background: #fff; box-shadow: 0 24px 50px -30px rgba(8, 26, 51, 0.55); }
+.project-browser__bar { display: flex; gap: 0.35rem; padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--line); }
+.project-browser__bar span { width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--line); }
+.project-browser img, .project-phone img { display: block; width: 100%; height: auto; }
+.project-phone { position: absolute; right: clamp(0.75rem, 4vw, 3rem); bottom: clamp(0.75rem, 3vw, 2rem); width: clamp(6.5rem, 22%, 13.5rem); overflow: hidden; border: 0.4rem solid #0d1b2e; border-radius: 1.4rem; background: #0d1b2e; box-shadow: 0 24px 50px -24px rgba(8, 26, 51, 0.7); }
+
+/* Página de caso */
+/* Bloque propio: el kicker (inline-flex) baja a su línea y no choca con el subrayado. */
+.project-back { display: flex; width: fit-content; min-height: 2.75rem; align-items: center; gap: 0.5rem; color: var(--navy); font-size: 0.95rem; font-weight: 600; text-underline-offset: 4px; }
+.project-back:hover { text-decoration: underline; }
+.project-hero__category { margin-top: 0.75rem; color: rgba(5, 43, 104, 0.8); font-size: 1rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.project-hero__visual { margin-top: clamp(2rem, 5vw, 3.5rem); overflow: hidden; border: 1px solid var(--line); border-radius: 1.75rem; box-shadow: var(--shadow-card); }
+.project-hero__visual .project-visual { min-height: clamp(20rem, 42vw, 34rem); }
+.project-hero__visual .project-visual--montecristo { padding-bottom: clamp(3rem, 8vw, 5rem); }
+.project-hero__visual .project-visual--montecristo .project-browser { max-width: 64rem; }
+.project-heading { margin-top: 1rem; color: var(--navy); font-size: clamp(1.6rem, 1.2rem + 1.3vw, 2.3rem); font-weight: 650; line-height: 1.1; letter-spacing: -0.04em; }
+.project-text { max-width: 58ch; margin-top: 1.1rem; color: rgba(8, 26, 51, 0.75); font-size: 1.0625rem; line-height: 1.75; }
+.project-gallery { margin-top: clamp(2.5rem, 6vw, 4rem); }
+
+.project-features { display: grid; gap: 1rem; }
+.project-feature { padding: 1.6rem; border: 1px solid var(--line); border-radius: 1.4rem; background: var(--surface); }
+.project-feature h3 { color: var(--navy); font-size: 1.2rem; font-weight: 650; letter-spacing: -0.02em; }
+.project-feature ul { display: grid; gap: 0.6rem; margin-top: 1rem; }
+.project-feature li { position: relative; padding-left: 1.4rem; color: rgba(8, 26, 51, 0.78); line-height: 1.5; }
+.project-feature li::before { position: absolute; left: 0; top: 0.5em; width: 0.55rem; height: 0.55rem; content: ""; border-radius: 50%; background: var(--mint); }
+@media (min-width: 640px) { .project-features { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .project-features { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+.project-capabilities { display: grid; gap: 1px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 1.4rem; background: rgba(255, 255, 255, 0.12); counter-reset: capability; }
+.project-capabilities li { display: flex; gap: 1rem; padding: 1.5rem; background: var(--navy); color: rgba(255, 255, 255, 0.88); font-size: 1.0625rem; line-height: 1.6; counter-increment: capability; }
+.project-capabilities li::before { flex: none; content: counter(capability, decimal-leading-zero); color: var(--sky); font-family: var(--font-geist-mono), monospace; font-size: 0.875rem; font-weight: 700; line-height: 1.9; }
+@media (min-width: 768px) { .project-capabilities { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

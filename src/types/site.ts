@@ -46,3 +46,45 @@ export type SolutionOption = {
   value: string;
   label: string;
 };
+
+export type ProjectImage = {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+};
+
+export type ProjectFeatureGroup = {
+  title: string;
+  items: string[];
+};
+
+export type Project = {
+  slug: string;
+  name: string;
+  category: string;
+  /** 1–2 frases para la tarjeta de la home. */
+  summary: string;
+  /** Descripción para metadatos (~150 caracteres). */
+  metaDescription: string;
+  intro: string;
+  context: string;
+  built: string;
+  featureGroups: ProjectFeatureGroup[];
+  capabilities: string[];
+  visual: {
+    /** Define la composición: editorial (logo + etiquetas) o capturas reales. */
+    theme: "body-factory" | "montecristo";
+    /** Solo composiciones editoriales; con capturas no se usa. */
+    logo?: ProjectImage;
+    tags: string[];
+    /** Solo proyectos con capturas reales del sitio publicado. */
+    desktop?: ProjectImage;
+    /** Versión ligera de `desktop` para las tarjetas. */
+    preview?: ProjectImage;
+    mobile?: ProjectImage;
+    gallery?: ProjectImage;
+  };
+  externalUrl?: string;
+  externalLabel?: string;
+};

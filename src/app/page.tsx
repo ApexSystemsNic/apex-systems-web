@@ -3,6 +3,8 @@ import Footer from "@/components/layout/02-footer/Footer";
 import Hero from "@/components/sections/01-hero/Hero";
 import Audience from "@/components/sections/02-audience/Audience";
 import Solutions from "@/components/sections/03-solutions/Solutions";
+// 03b: Proyectos va tras Soluciones; el sufijo evita renumerar las carpetas siguientes.
+import Projects from "@/components/sections/03b-projects/Projects";
 import WhyApex from "@/components/sections/04-why-apex/WhyApex";
 import AboutApex from "@/components/sections/05-about/AboutApex";
 import Process from "@/components/sections/06-process/Process";
@@ -20,6 +22,7 @@ export default function Home() {
         <Hero />
         <Audience />
         <Solutions />
+        <Projects />
         <WhyApex />
         <AboutApex />
         <Process />

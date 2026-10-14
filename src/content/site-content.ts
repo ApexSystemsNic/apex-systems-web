@@ -4,6 +4,7 @@ export { hero } from "./site/hero";
 export { audience } from "./site/audience";
 export { aboutApex } from "./site/about";
 export { solutions } from "./site/solutions";
+export { projects, projectsSection, projectPage } from "./site/projects";
 export { whyApex } from "./site/why-apex";
 export { process } from "./site/process";
 export { maintenance } from "./site/maintenance";

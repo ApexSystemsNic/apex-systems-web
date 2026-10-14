@@ -91,7 +91,7 @@ export default function Contact() {
       <div className="contact-section__orb" aria-hidden="true" />
       <Reveal>
         <SectionHeading
-          eyebrow="Hagámoslo conversable"
+          eyebrow="Solicita una cotización"
           title={contact.title}
           intro={contact.description}
           className="relative max-w-3xl"

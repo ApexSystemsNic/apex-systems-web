@@ -32,7 +32,7 @@ export function buildStructuredData(siteUrl: URL) {
         url: origin,
         logo: `${origin}/apex-logo.png`,
         description:
-          "Empresa tecnológica de Nicaragua que desarrolla páginas web, sistemas personalizados, aplicaciones móviles y soluciones digitales para negocios.",
+          "Empresa de soluciones digitales de Nicaragua que crea páginas web, tiendas digitales, sistemas personalizados y aplicaciones móviles para emprendimientos, profesionales independientes y negocios, con diseño, desarrollo y acompañamiento cercano.",
         areaServed: { "@type": "Country", name: "Nicaragua" },
         ...(instagramUrl && { sameAs: [instagramUrl] }),
         contactPoint: {

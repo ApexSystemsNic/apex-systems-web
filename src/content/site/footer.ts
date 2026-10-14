@@ -8,7 +8,7 @@ export const footer = {
     { label: "Sistemas personalizados", href: "/#soluciones" },
     { label: "Aplicaciones móviles para negocios", href: "/#soluciones" },
   ],
-  maintenanceLink: { label: "Mantenimiento para clientes", href: "/#mantenimiento" },
+  maintenanceLink: { label: "Mantenimiento para clientes Apex", href: "/#mantenimiento" },
   navLabel: "Secciones del sitio",
   solutionsLabel: "Soluciones",
   legalLabel: "Legal",

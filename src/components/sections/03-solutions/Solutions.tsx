@@ -102,7 +102,7 @@ function MobileGraphic() {
         <span className="mobile-phone__notch" />
         <div className="mobile-phone__screen">
           <div className="mobile-phone__head">
-            <b>Dashboard</b>
+            <b>Resumen</b>
             <i />
           </div>
           <div className="mobile-phone__hero">
@@ -189,7 +189,7 @@ export default function Solutions() {
 
                   <div className="solution-card__visual" data-motion-scene>
                     <div className="solution-card__visual-label">
-                      <span>Exploración visual</span>
+                      <span>Ejemplo visual</span>
                       <i />
                     </div>
                     <Graphic />

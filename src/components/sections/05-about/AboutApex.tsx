@@ -20,7 +20,7 @@ export default function AboutApex() {
         <div className="about-pillars">
           {[mission, vision].map((item, index) => (
             <Reveal key={item.heading} className="about-pillar">
-              <span className="about-label">0{index + 2} / Hacia dónde vamos</span>
+              <span className="about-label">0{index + 2} / {item.label}</span>
               <h3>{item.heading}</h3><p>{item.text}</p>
             </Reveal>
           ))}

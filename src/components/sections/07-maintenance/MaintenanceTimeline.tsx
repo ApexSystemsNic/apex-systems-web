@@ -12,7 +12,7 @@ const steps = [
     day: "DÍA 1–30",
     badge: "Incluido",
     title: "30 días incluidos",
-    note: "Ajustes del desarrollo",
+    note: "Corrección de errores",
     icon: <svg {...svg}><rect x="4" y="5" width="16" height="15" rx="3" /><path d="M8 3v4M16 3v4M4 10h16" /></svg>,
   },
   {
@@ -26,7 +26,7 @@ const steps = [
 
 export default function MaintenanceTimeline() {
   return (
-    <ol className="maintenance-timeline" aria-label="Línea de tiempo después de publicar">
+    <ol className="maintenance-timeline" aria-label="Línea de tiempo después de la entrega">
       {steps.map((step, index) => (
         <li key={step.day} className={`maintenance-step${index === 2 ? " is-optional" : ""}`}>
           <span className="maintenance-step__icon">{step.icon}</span>

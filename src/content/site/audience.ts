@@ -3,7 +3,7 @@ import type { AudienceSegment } from "@/types/site";
 export const audience = {
   title: "Soluciones creadas para negocios que quieren crecer y trabajar mejor.",
   intro:
-    "Apex está dirigido a emprendimientos, profesionales y negocios de Nicaragua que buscan fortalecer su presencia digital, facilitar la atención a sus clientes o mejorar sus procesos internos.",
+    "Trabajamos con emprendimientos, profesionales independientes y negocios que buscan fortalecer su presencia digital, facilitar la atención a sus clientes o mejorar sus procesos internos.",
   segments: [
     {
       id: "restaurantes",
@@ -11,7 +11,7 @@ export const audience = {
       description:
         "Creamos experiencias digitales que permiten presentar el menú, compartir promociones y facilitar pedidos o solicitudes de reservación.",
       possibilities: [
-        "Presentar su propuesta con claridad",
+        "Presentar tu propuesta con claridad",
         "Facilitar la decisión del cliente",
         "Acercar la conversación o reservación",
       ],

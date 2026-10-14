@@ -29,8 +29,13 @@ export function buildContactMessage(data: ContactFormData, solutionLabel: string
   const fields: Record<string, string> = { ...data, solucion: solutionLabel };
   // Single-pass callback: dollar signs and template-like user text must
   // remain literal, not become replacement syntax or nested placeholders.
-  const body = contactMessageTemplate.replace(/\{\{(nombre|negocio|solucion|categoria|descripcion)\}\}/g,
-    (_, key: string) => fields[key].trim() || "—");
+  // The template's own period is dropped when the value already ends with
+  // closing punctuation ("…prueba." must not become "…prueba..").
+  const body = contactMessageTemplate.replace(/\{\{(nombre|negocio|solucion|categoria|descripcion)\}\}(\.?)/g,
+    (_, key: string, period: string) => {
+      const value = fields[key].trim() || "—";
+      return value + (period && /[.!?…][)"'»”]*$/.test(value) ? "" : period);
+    });
   const methods: Record<string, string> = { whatsapp: "WhatsApp", correo: "Correo electrónico", cualquiera: "Cualquiera" };
   const method = methods[data.medioContacto];
   const extra = [

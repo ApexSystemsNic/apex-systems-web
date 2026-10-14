@@ -6,38 +6,38 @@ export const process = {
     {
       number: "01",
       title: "Cuéntanos qué necesitas",
-      description: "Solicitud breve y continuación por WhatsApp.",
+      description: "Completas una solicitud breve y continuamos la conversación por WhatsApp.",
     },
     {
       number: "02",
       title: "Agendamos una reunión",
-      description: "Comprender el negocio, aclarar dudas y priorizar.",
+      description: "Conversamos para comprender tu negocio, aclarar dudas y definir prioridades.",
     },
     {
       number: "03",
       title: "Preparamos una propuesta personalizada",
-      description: "Alcance, funciones, precio, tiempo, etapas, revisiones, pago y mantenimiento.",
+      description: "Te presentamos el alcance, las funciones, el precio, el tiempo estimado, las etapas, las revisiones, la forma de pago y el mantenimiento.",
     },
     {
       number: "04",
       title: "Formalizamos el proyecto",
-      description: "Acuerdo, 50 % de adelanto, recopilación de contenido y fecha de inicio.",
+      description: "Confirmamos el acuerdo, recibimos el 50 % de adelanto, reunimos el contenido y fijamos la fecha de inicio.",
     },
     {
       number: "05",
       title: "Diseñamos y desarrollamos",
-      description: "Avances y revisiones acordadas.",
+      description: "Desarrollamos tu proyecto, te compartimos avances y hacemos las revisiones acordadas.",
     },
     {
       number: "06",
       title: "Revisamos y publicamos",
       description:
-        "Funcionamiento, responsive, formularios, velocidad, seguridad, analítica y SEO básico. Tras aprobación se completa el pago pendiente.",
+        "Verificamos el funcionamiento, la adaptación a distintas pantallas, los formularios, la velocidad, la seguridad, la analítica y el SEO básico. Tras tu aprobación se completa el pago pendiente y, después, publicamos o entregamos el proyecto.",
     },
     {
       number: "07",
       title: "Continuamos acompañándote",
-      description: "Un mes para errores del desarrollo entregado y mantenimiento mensual opcional.",
+      description: "Incluimos 30 días para corregir errores relacionados con el desarrollo entregado y ofrecemos mantenimiento mensual opcional.",
     },
   ] satisfies ProcessStep[],
 };

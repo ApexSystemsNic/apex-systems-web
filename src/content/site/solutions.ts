@@ -3,21 +3,21 @@ import type { SolutionCard } from "@/types/site";
 export const solutions = {
   title: "Tecnología diseñada alrededor de tu negocio.",
   intro:
-    "No todos los negocios tienen las mismas necesidades. En Apex analizamos cada proyecto para crear una solución completamente personalizada, práctica y preparada para crecer contigo.",
+    "No todos los negocios tienen las mismas necesidades. En Apex analizamos cada proyecto para crear una solución a la medida, práctica y preparada para crecer contigo.",
   cards: [
     {
       number: "01",
       title: "Páginas web",
       hook: "Convierte tu presencia digital en una herramienta para generar oportunidades.",
       description:
-        "Diseñamos páginas empresariales, portafolios profesionales y landing pages que presentan claramente el negocio y facilitan el contacto.",
+        "Diseñamos páginas empresariales, portafolios profesionales y páginas promocionales que presentan claramente el negocio y facilitan el contacto.",
       includes: [
         "Diseño personalizado",
-        "Adaptación responsive",
+        "Adaptación a cualquier pantalla",
         "WhatsApp",
         "Formularios",
         "Analítica",
-        "SEO",
+        "SEO básico",
         "Dominio durante el primer año cuando esté en la propuesta",
       ],
       cta: "Quiero una página web",
@@ -87,11 +87,11 @@ export const solutions = {
     },
     {
       number: "05",
-      title: "Soporte y mantenimiento",
+      title: "Mantenimiento mensual",
       badge: "Exclusivo para clientes Apex",
-      hook: "Tu proyecto no termina cuando publicamos la página.",
+      hook: "Mantén tu proyecto al día después de la entrega.",
       description:
-        "Servicio mensual que puede incluir actualizaciones, optimización, solución de errores, contenido, copias de seguridad, monitoreo y revisión de seguridad según el alcance contratado.",
+        "Servicio mensual con actualizaciones de contenido, monitoreo y revisión de seguridad según el alcance contratado.",
       includes: [],
       cta: "Conocer el mantenimiento",
       href: "#mantenimiento",

@@ -5,8 +5,8 @@ export type SocialLink = {
   icon: "instagram" | "facebook" | "mail" | "whatsapp";
 };
 
-// Numero oficial de Apex Systems: codigo de Nicaragua + numero local.
-// `wa.me` requiere solo digitos, sin +, espacios ni guiones.
+// Número oficial de Apex Systems: código de Nicaragua + número local.
+// `wa.me` requiere solo dígitos, sin +, espacios ni guiones.
 export const whatsappNumber = "50585829219";
 export const whatsappDisplay = "+505 8582-9219";
 

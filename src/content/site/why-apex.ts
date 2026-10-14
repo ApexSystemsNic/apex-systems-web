@@ -3,31 +3,31 @@ import type { WhyApexBlock } from "@/types/site";
 export const whyApex = {
   title: "Una solución digital debe adaptarse a tu negocio, no al contrario.",
   intro:
-    "En Apex trabajamos de forma cercana para comprender cómo funciona tu negocio, qué necesita mejorar y qué resultados quieres alcanzar. A partir de eso, diseñamos una solución personalizada, clara y preparada para crecer contigo.",
+    "En Apex trabajamos de forma cercana para comprender cómo funciona tu negocio, qué necesita mejorar y qué resultados quieres alcanzar. A partir de eso, diseñamos una solución clara y personalizada.",
   blocks: [
     {
-      title: "Soluciones completamente personalizadas",
-      description: "Cada proyecto se desarrolla alrededor de sus objetivos y procesos.",
+      title: "Soluciones a tu medida",
+      description: "Desarrollamos cada proyecto alrededor de tus objetivos y procesos.",
     },
     {
-      title: "Atención cercana en Nicaragua",
-      description: "Comunicación y reuniones con clientes nacionales.",
+      title: "Acompañamiento cercano en Nicaragua",
+      description: "Conversamos y nos reunimos con nuestros clientes en Nicaragua.",
     },
     {
       title: "Diseño y desarrollo en un mismo equipo",
-      description: "Apariencia, experiencia, funcionamiento y publicación coordinados.",
+      description: "Coordinamos la apariencia, la experiencia de uso, el funcionamiento y la publicación.",
     },
     {
       title: "Comunicación transparente",
-      description: "Alcance, precio, tiempos y entregables definidos; avances compartidos.",
+      description: "Definimos alcance, precio, tiempos y entregables, y te compartimos los avances.",
     },
     {
       title: "Enfoque en resultados",
-      description: "Contactos, presentación de servicios, pedidos u organización de procesos.",
+      description: "Cada solución apunta a un objetivo concreto: recibir contactos, presentar servicios, gestionar pedidos u organizar procesos.",
     },
     {
       title: "Acompañamiento después de la entrega",
-      description: "Mantenimiento mensual exclusivo para clientes con proyectos desarrollados por Apex.",
+      description: "Ofrecemos mantenimiento mensual exclusivo para proyectos desarrollados por Apex.",
     },
   ] satisfies WhyApexBlock[],
   closing: {

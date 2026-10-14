@@ -43,7 +43,7 @@ export function ContactFields({
             aria-invalid={showError("nombre")}
             aria-describedby={describedBy("nombre")}
           />
-          {showError("nombre") && <p id={errorId("nombre")} role="alert" className="mt-1 text-xs text-coral">Cuéntanos tu nombre.</p>}
+          {showError("nombre") && <p id={errorId("nombre")} role="alert" className="mt-1 text-xs text-coral">{contact.fieldErrors.nombre}</p>}
         </div>
 
         <div>
@@ -59,7 +59,7 @@ export function ContactFields({
             aria-invalid={showError("negocio")}
             aria-describedby={describedBy("negocio")}
           />
-          {showError("negocio") && <p id={errorId("negocio")} role="alert" className="mt-1 text-xs text-coral">Indica el nombre de tu negocio.</p>}
+          {showError("negocio") && <p id={errorId("negocio")} role="alert" className="mt-1 text-xs text-coral">{contact.fieldErrors.negocio}</p>}
         </div>
 
         <div className="sm:col-span-2">
@@ -75,7 +75,7 @@ export function ContactFields({
             aria-invalid={showError("categoria")}
             aria-describedby={describedBy("categoria")}
           />
-          {showError("categoria") && <p id={errorId("categoria")} role="alert" className="mt-1 text-xs text-coral">Cuéntanos a qué se dedica tu negocio.</p>}
+          {showError("categoria") && <p id={errorId("categoria")} role="alert" className="mt-1 text-xs text-coral">{contact.fieldErrors.categoria}</p>}
         </div>
       </div>
     );
@@ -108,7 +108,7 @@ export function ContactFields({
               Exclusivo para clientes Apex: solo damos mantenimiento a proyectos desarrollados por nuestro equipo. No recibimos páginas de terceros para este servicio.
             </p>
           )}
-          {showError("solucion") && <p id={errorId("solucion")} role="alert" className="mt-1 text-xs text-coral">Selecciona la solución que te interesa.</p>}
+          {showError("solucion") && <p id={errorId("solucion")} role="alert" className="mt-1 text-xs text-coral">{contact.fieldErrors.solucion}</p>}
         </div>
 
         <div>
@@ -124,7 +124,7 @@ export function ContactFields({
             aria-invalid={showError("descripcion")}
             aria-describedby={describedBy("descripcion")}
           />
-          {showError("descripcion") && <p id={errorId("descripcion")} role="alert" className="mt-1 text-xs text-coral">Cuéntanos brevemente qué necesitas.</p>}
+          {showError("descripcion") && <p id={errorId("descripcion")} role="alert" className="mt-1 text-xs text-coral">{contact.fieldErrors.descripcion}</p>}
         </div>
 
         <div>
@@ -149,10 +149,10 @@ export function ContactFields({
   const contactError = (className: string) => (
     <p id={errorId("contacto")} role="alert" className={`text-xs text-coral ${className}`}>
       {data.medioContacto === "whatsapp"
-        ? "Añade tu teléfono para contactarte por WhatsApp."
+        ? contact.fieldErrors.contactoWhatsapp
         : data.medioContacto === "correo"
-          ? "Añade tu correo para contactarte por ese medio."
-          : "Déjanos al menos un teléfono o un correo."}
+          ? contact.fieldErrors.contactoCorreo
+          : contact.fieldErrors.contactoCualquiera}
     </p>
   );
 
@@ -190,7 +190,7 @@ export function ContactFields({
           aria-describedby={showError("correo") ? errorId("correo") : emailMissing ? errorId("contacto") : undefined}
         />
         {emailMissing && !phoneMissing && contactError("mt-1")}
-        {showError("correo") && <p id={errorId("correo")} role="alert" className="mt-1 text-xs text-coral">Revisa el formato del correo (por ejemplo, nombre@dominio.com).</p>}
+        {showError("correo") && <p id={errorId("correo")} role="alert" className="mt-1 text-xs text-coral">{contact.fieldErrors.correo}</p>}
       </div>
 
       {phoneMissing && emailMissing && contactError("-mt-3 sm:col-span-2")}
@@ -211,7 +211,7 @@ export function ContactFields({
             <option key={option.value} value={option.value}>{option.label}</option>
           ))}
         </select>
-        {showError("medioContacto") && <p id={errorId("medioContacto")} role="alert" className="mt-1 text-xs text-coral">Indica cómo prefieres que te contactemos.</p>}
+        {showError("medioContacto") && <p id={errorId("medioContacto")} role="alert" className="mt-1 text-xs text-coral">{contact.fieldErrors.medioContacto}</p>}
       </div>
 
       <p className="text-sm leading-relaxed text-foreground/80 sm:col-span-2">

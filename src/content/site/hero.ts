@@ -1,8 +1,10 @@
+import { brand } from "./brand";
+
 export const hero = {
   eyebrow: "Soluciones digitales para negocios en crecimiento",
-  title: "Transformamos las necesidades de tu negocio en soluciones digitales reales.",
+  title: brand.promise,
   description:
-    "Creamos páginas web, tiendas digitales, sistemas personalizados y aplicaciones móviles para emprendimientos, profesionales independientes y negocios de Nicaragua. Combinamos diseño, desarrollo y atención cercana para construir soluciones enfocadas en resultados.",
+    "Creamos páginas web, tiendas digitales, sistemas personalizados y aplicaciones móviles para emprendimientos, profesionales independientes y negocios en Nicaragua. Combinamos diseño, desarrollo y acompañamiento cercano para construir soluciones enfocadas en resultados.",
   primaryCta: "Cotizar mi proyecto",
   secondaryCta: "Conocer soluciones",
 };

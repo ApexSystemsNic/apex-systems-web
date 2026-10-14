@@ -1,4 +1,4 @@
 export const finalCta = {
-  text: "Tu negocio aporta la visión. Hagamos realidad el siguiente paso.",
+  text: "Tienes la idea. Te ayudamos a convertirla en una solución digital.",
   cta: "Cuéntanos tu idea",
 };

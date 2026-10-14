@@ -86,7 +86,7 @@ export default function Audience() {
             {audience.title}
           </h2>
           <div className="audience-intro">
-            <span>Para negocios de Nicaragua</span>
+            <span>Para negocios en Nicaragua</span>
             <p>{audience.intro}</p>
           </div>
         </div>
@@ -136,7 +136,7 @@ export default function Audience() {
                   className="audience-explorer__panel-inner"
                 >
                   <div className="audience-explorer__visual">
-                    <span className={`audience-explorer__badge ${accentClasses[accent]}`}>Vista de solución</span>
+                    <span className={`audience-explorer__badge ${accentClasses[accent]}`}>Ejemplo visual</span>
                     <AudienceScene index={activeIndex} />
                   </div>
 

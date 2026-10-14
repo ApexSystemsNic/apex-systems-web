@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 const title = "Apex Systems Nicaragua | Desarrollo web y software";
 
 const description =
-  "Apex Systems Nicaragua desarrolla páginas web, sistemas personalizados, aplicaciones móviles y soluciones digitales para empresas y negocios.";
+  "Apex Systems Nicaragua crea páginas web, tiendas digitales, sistemas personalizados y aplicaciones móviles para emprendimientos, profesionales y negocios.";
 
 // Optional: set GOOGLE_SITE_VERIFICATION at build time to add the Search Console meta tag.
 const googleVerification = process.env.GOOGLE_SITE_VERIFICATION?.trim();

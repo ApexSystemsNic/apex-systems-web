@@ -22,10 +22,10 @@ export default function Maintenance() {
 
           <div className="mt-9 flex flex-wrap gap-3">
             {[
-              "Errores del desarrollo",
-              "Copias de seguridad",
-              "Optimización",
+              "30 días incluidos",
+              "Actualizaciones de contenido",
               "Monitoreo",
+              "Revisión de seguridad",
             ].map((item) => (
               <span key={item} className="maintenance-pill"><i />{item}</span>
             ))}
@@ -39,8 +39,8 @@ export default function Maintenance() {
         <Reveal>
           <div className="maintenance-console">
             <div className="maintenance-console__top">
-              <span>Estado del proyecto</span>
-              <span><i /> Acompañamiento claro</span>
+              <span>Etapas tras la entrega</span>
+              <span><i /> Incluido y opcional</span>
             </div>
 
             <div className="maintenance-console__visual" data-motion-scene>

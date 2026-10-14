@@ -23,7 +23,7 @@ export default function FinalCTA() {
             {finalCta.text}
           </p>
         </Reveal>
-        <Reveal delay={0.12}>
+        <Reveal>
           <LinkButton href="#contacto" variant="accent" className="flex-none lg:mb-2">
             {finalCta.cta}
           </LinkButton>

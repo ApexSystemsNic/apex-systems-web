@@ -12,7 +12,7 @@ El proyecto cuenta con scripts reproducibles para lint, TypeScript y exportació
 - Validación local del formulario y apertura segura de WhatsApp.
 - Encabezados de seguridad conservadores mediante `public/_headers`, compatibles con archivos estáticos de Cloudflare Pages.
 - Exportación `output: "export"` e imágenes locales sin dependencia de un servidor de optimización.
-- `metadataBase` configurable mediante `SITE_URL` y resolución automática de la URL de producción de Vercel.
+- `metadataBase` configurable mediante `SITE_URL`.
 - Metadatos por página con canonical correcto para evitar que las páginas legales apunten al canonical de la portada.
 - Canonical, Open Graph y Twitter metadata.
 - `robots.txt` y `sitemap.xml` generados desde la URL canónica.

@@ -47,7 +47,7 @@ $env:SITE_URL="https://apexsystemsnic.com"
 npm.cmd run check:deploy
 ```
 
-`check:deploy` rechaza una URL sin HTTPS, localhost o una URL con rutas adicionales.
+`check:deploy` rechaza una `SITE_URL` sin HTTPS, con localhost o con rutas adicionales (si no está definida, no falla y se usa el dominio oficial), ejecuta `check` y después verifica la carpeta `out/`. Detalle en `docs/DESPLIEGUE.md`.
 
 ## Organización
 

@@ -9,6 +9,10 @@ function parseOrigin(value: string, source: string): URL {
     throw new Error(`${source} debe usar http:// o https://.`);
   }
 
+  if (url.username || url.password) {
+    throw new Error(`${source} no puede incluir usuario ni contraseña.`);
+  }
+
   if (url.pathname !== "/" || url.search || url.hash) {
     throw new Error(`${source} debe contener solo el origen, sin ruta, query ni hash.`);
   }
@@ -17,15 +21,12 @@ function parseOrigin(value: string, source: string): URL {
 }
 
 /**
- * Public base URL used by metadata, robots and the sitemap.
+ * URL pública base usada por los metadatos, robots y el sitemap.
  *
- * SITE_URL can override the canonical URL for preview or migration builds.
- * Production builds default to the official Apex Systems domain so metadata
- * can never accidentally point to localhost in Cloudflare Pages.
- *
- * Vercel deployments can also resolve their production URL automatically.
- * Local builds intentionally fall back to localhost so `npm run check`
- * remains reproducible before a domain is assigned.
+ * SITE_URL permite sobrescribirla en builds de vista previa o de migración.
+ * Sin SITE_URL, todo build (`next build`, local o en Cloudflare Pages) usa el
+ * dominio oficial, de modo que los metadatos nunca apuntan a localhost.
+ * Solo `npm run dev` cae a localhost.
  */
 export function getSiteUrl(): URL {
   const configured = process.env.SITE_URL?.trim();
@@ -35,11 +36,6 @@ export function getSiteUrl(): URL {
       throw new Error("SITE_URL debe usar HTTPS en producción.");
     }
     return url;
-  }
-
-  const vercelProductionUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim();
-  if (vercelProductionUrl) {
-    return parseOrigin(vercelProductionUrl, "VERCEL_PROJECT_PRODUCTION_URL");
   }
 
   if (process.env.NODE_ENV === "production") {

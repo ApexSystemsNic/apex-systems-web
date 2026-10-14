@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 const socialImage = {
-  url: "/apex-logo.png",
-  width: 1254,
-  height: 1254,
+  url: "/og-image.png",
+  width: 1200,
+  height: 630,
   alt: "Apex Systems",
 };
 
@@ -35,7 +35,7 @@ export function buildPageMetadata({
       images: [socialImage],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title,
       description,
       images: [socialImage.url],

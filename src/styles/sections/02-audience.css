@@ -9,7 +9,7 @@
 .audience-explorer__tabs button.is-active { border-color:rgba(255,255,255,.16); background:rgba(255,255,255,.1); transform:translateX(.2rem); }
 .audience-explorer__tabs button > span:nth-child(2) { min-width:0; }
 .audience-explorer__tabs strong { display:block; font-size:1rem; }
-.audience-explorer__tabs small { display:-webkit-box; margin-top:.38rem; overflow:hidden; color:rgba(255,255,255,.54); font-size:.73rem; line-height:1.45; -webkit-box-orient:vertical; -webkit-line-clamp:2; }
+.audience-explorer__tabs small { display:-webkit-box; margin-top:.38rem; overflow:hidden; color:rgba(255,255,255,.62); font-size:.75rem; line-height:1.45; -webkit-box-orient:vertical; -webkit-line-clamp:2; }
 .audience-explorer__tabs svg { width:1.1rem; fill:none; stroke:rgba(255,255,255,.4); stroke-width:1.5; transition:transform .25s ease,stroke .25s ease; }
 .audience-explorer__tabs button.is-active svg { transform:translateX(.2rem); stroke:var(--sky); }
 .audience-explorer__number { display:grid; width:2.25rem; height:2.25rem; place-items:center; border:1px solid rgba(255,255,255,.16); border-radius:50%; color:rgba(255,255,255,.58); font-family:var(--font-geist-mono),monospace; font-size:.75rem; }

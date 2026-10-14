@@ -5,5 +5,4 @@ export const hero = {
     "Creamos páginas web, tiendas digitales, sistemas personalizados y aplicaciones móviles para emprendimientos, profesionales independientes y negocios de Nicaragua. Combinamos diseño, desarrollo y atención cercana para construir soluciones enfocadas en resultados.",
   primaryCta: "Cotizar mi proyecto",
   secondaryCta: "Conocer soluciones",
-  visualLabel: "Visual provisional",
 };

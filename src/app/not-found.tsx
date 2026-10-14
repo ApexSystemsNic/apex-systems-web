@@ -7,6 +7,10 @@ export const metadata: Metadata = {
   title: "Página no encontrada | Apex Systems",
   description: "La página que buscas no existe o cambió de dirección.",
   robots: { index: false, follow: false },
+  // Una 404 no tiene URL propia: anula el canonical y las tarjetas sociales heredadas de la home.
+  alternates: { canonical: null },
+  openGraph: null,
+  twitter: null,
 };
 
 /**

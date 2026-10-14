@@ -1,6 +1,7 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, LazyMotion, domAnimation } from "motion/react";
+import * as m from "motion/react-m";
 import { useState } from "react";
 import { audience } from "@/content/site-content";
 import { LinkButton } from "@/components/ui/Button";
@@ -91,7 +92,7 @@ export default function Audience() {
         </div>
       </Reveal>
 
-      <Reveal delay={0.08} className="relative mt-12">
+      <Reveal className="relative mt-12">
         <div className="audience-explorer">
           <div className="audience-explorer__tabs" role="group" aria-label="Selecciona tu tipo de negocio">
             {audience.segments.map((segment, index) => {
@@ -99,7 +100,6 @@ export default function Audience() {
               return (
                 <button
                   key={segment.id}
-                  id={`audience-tab-${segment.id}`}
                   type="button"
                   aria-pressed={selected}
                   aria-controls="audience-panel"
@@ -125,39 +125,41 @@ export default function Audience() {
             className="audience-explorer__panel"
             data-motion-scene
           >
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.div
-                key={active.id}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                className="audience-explorer__panel-inner"
-              >
-                <div className="audience-explorer__visual">
-                  <span className={`audience-explorer__badge ${accentClasses[accent]}`}>Vista de solución</span>
-                  <AudienceScene index={activeIndex} />
-                </div>
+            <LazyMotion features={domAnimation} strict>
+              <AnimatePresence mode="wait" initial={false}>
+                <m.div
+                  key={active.id}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+                  className="audience-explorer__panel-inner"
+                >
+                  <div className="audience-explorer__visual">
+                    <span className={`audience-explorer__badge ${accentClasses[accent]}`}>Vista de solución</span>
+                    <AudienceScene index={activeIndex} />
+                  </div>
 
-                <div className="audience-explorer__content">
-                  <span className="font-mono text-sm font-semibold text-navy">
-                    0{activeIndex + 1} / 04
-                  </span>
-                  <h3>{active.title}</h3>
-                  <p>{active.description}</p>
-                  <p className="audience-outcomes__label">Lo que buscamos lograr</p>
-                  <ul className="audience-outcomes">
-                    {active.possibilities.map((item, index) => (
-                      <li key={item}>
-                        <span>{String(index + 1).padStart(2, "0")}</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <LinkButton href="#contacto" variant="accent">{active.cta}</LinkButton>
-                </div>
-              </motion.div>
-            </AnimatePresence>
+                  <div className="audience-explorer__content">
+                    <span className="font-mono text-sm font-semibold text-navy">
+                      0{activeIndex + 1} / 04
+                    </span>
+                    <h3>{active.title}</h3>
+                    <p>{active.description}</p>
+                    <p className="audience-outcomes__label">Lo que buscamos lograr</p>
+                    <ul className="audience-outcomes">
+                      {active.possibilities.map((item, index) => (
+                        <li key={item}>
+                          <span>{String(index + 1).padStart(2, "0")}</span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                    <LinkButton href="#contacto" variant="accent">{active.cta}</LinkButton>
+                  </div>
+                </m.div>
+              </AnimatePresence>
+            </LazyMotion>
           </div>
         </div>
       </Reveal>

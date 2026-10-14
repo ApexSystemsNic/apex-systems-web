@@ -1,4 +1,5 @@
 import { socialLinks } from "@/content/contact-channels";
+import { newTabHint } from "@/content/site-content";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/MotionPrimitives";
 
@@ -26,7 +27,7 @@ export default function SocialContact() {
         {socialLinks.map(link => <a key={link.label} href={link.href} target={link.icon === "mail" ? undefined : "_blank"} rel={link.icon === "mail" ? undefined : "noopener noreferrer"}>
           <span className={`social-icon social-icon--${link.icon}`}><SocialIcon kind={link.icon}/></span>
           <span className="social-link-text"><strong>{link.label}</strong>{" "}<small>{link.detail}</small></span>
-          {link.icon !== "mail" && <><span className="social-arrow" aria-hidden="true">↗</span><span className="sr-only"> (abre otra pestaña)</span></>}
+          {link.icon !== "mail" && <><span className="social-arrow" aria-hidden="true">↗</span><span className="sr-only"> {newTabHint}</span></>}
         </a>)}
       </div>
     </Reveal>

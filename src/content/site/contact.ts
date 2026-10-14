@@ -12,7 +12,6 @@ export const contact = {
   privacyNotice: {
     text: "Al finalizar abriremos WhatsApp con tu consulta preparada; el sitio no almacena tus datos. Más información en la",
     linkLabel: "política de privacidad",
-    newTabHint: "(abre otra pestaña)",
   },
   solutionOptions: [
     { value: "pagina-web", label: "Páginas web" },

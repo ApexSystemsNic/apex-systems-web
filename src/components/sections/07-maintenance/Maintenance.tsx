@@ -36,7 +36,7 @@ export default function Maintenance() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.1}>
+        <Reveal>
           <div className="maintenance-console">
             <div className="maintenance-console__top">
               <span>Estado del proyecto</span>

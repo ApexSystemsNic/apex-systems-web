@@ -1,10 +1,7 @@
 import type { ReactNode } from "react";
 
-/**
- * Wrappers ligeros para mantener el contenido visible sin observadores de scroll.
- * `delay` se conserva para que las secciones compartan la misma interfaz.
- */
-type RevealProps = { children: ReactNode; className?: string; delay?: number };
+/** Wrappers ligeros para mantener el contenido visible sin observadores de scroll. */
+type RevealProps = { children: ReactNode; className?: string };
 
 export function Reveal({ children, className }: RevealProps) {
   return <div className={className}>{children}</div>;
@@ -17,7 +14,6 @@ export function MaskReveal({ children, className }: RevealProps) {
 export function WordReveal({ text, className, as: Wrapper = "span" }: {
   text: string;
   className?: string;
-  delay?: number;
   as?: "span" | "p" | "h1" | "h2";
 }) {
   return <Wrapper className={className}>{text}</Wrapper>;

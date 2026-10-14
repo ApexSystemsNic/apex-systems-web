@@ -19,7 +19,7 @@ export default function AboutApex() {
         </Reveal>
         <div className="about-pillars">
           {[mission, vision].map((item, index) => (
-            <Reveal key={item.heading} delay={index * .08} className="about-pillar">
+            <Reveal key={item.heading} className="about-pillar">
               <span className="about-label">0{index + 2} / Hacia dónde vamos</span>
               <h3>{item.heading}</h3><p>{item.text}</p>
             </Reveal>

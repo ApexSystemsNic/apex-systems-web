@@ -1,5 +1,5 @@
 import type { RefObject } from "react";
-import { contact } from "@/content/site-content";
+import { contact, newTabHint } from "@/content/site-content";
 import { LinkButton } from "@/components/ui/Button";
 
 export function ContactSubmitted({
@@ -27,6 +27,7 @@ export function ContactSubmitted({
       <div className="mt-5 flex flex-wrap items-center gap-4">
         <LinkButton href={whatsappHref} target="_blank" rel="noopener noreferrer" variant="accent">
           Abrir WhatsApp nuevamente
+          <span className="sr-only"> {newTabHint}</span>
         </LinkButton>
         <button type="button" onClick={onEdit} className="text-sm font-medium text-navy underline">
           Editar información
